@@ -188,9 +188,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                     }
               
                 }
-                FormMainFacade.Instance.update()
-            
-       
+
         }
 
         //Albums
@@ -791,7 +789,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
-            fetchLoggedInUser();
+            if(r_FetchersThread.Join(1) && r_UserDetailsThread.Join(1))
+            {
+                listBoxAlbums.Items.Clear();
+                listBoxFavouriteTeams.Items.Clear();
+                listBoxPosts.Items.Clear();
+                listBoxFriendsList.Items.Clear();
+                new Thread(fetchLoggedInUser).Start(); 
+            }    
+            //fetchLoggedInUser();  
         }
     }
 

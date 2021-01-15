@@ -16,6 +16,7 @@ using System.Threading;
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
 
+
     public class FormMainFacade:IPostAdapterLIstener
     {
 
@@ -26,7 +27,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         private static FormMainFacade s_FormMainFacade;
 
-        private FormMainFacade() { }
+        private PostAdapter postAdapter;
+
+        private FormMainFacade()
+        {
+            postAdapter = new PostAdapter();
+            postAdapter.AttachListener(this as IPostAdapterLIstener);
+            
+        }
                    
 
         public UserProxy LoginToMainForm()
@@ -106,7 +114,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                     throw new Facebook.FacebookApiException("");
                 }
-
+                
                 return countPosts;
             }
 
@@ -213,7 +221,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             {
 
                 posts = PostAdapter.CreateAdapterPosts(this.LoggedInUser.LoggedUser.Posts);
-
+                
             }
             catch (Exception)
             {
@@ -226,13 +234,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-         public void update(int i_CountNewPosts)
+        public void update()
         {
-            return 
+            MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
         }
-      
-
-        
 
         public FacebookObjectCollection<Checkin> GetCheckins()
         {

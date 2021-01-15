@@ -7,8 +7,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
     public interface IPostAdapterLIstener
     {
-         int CountNewPosts { get; set; }
-        //void update(int i_CountNewPosts);
+
+        void update();
     }
 
     public class PostAdapter
@@ -18,14 +18,18 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         private string m_PostDescription;
         public static int postCount  { get; private set; } = 0;
+        public static int CountNewPosts { get;  private set; }
         private static readonly List<IPostAdapterLIstener> lIsteners=new List<IPostAdapterLIstener>();
 
 
-        public PostAdapter(Post i_Post)
+        public PostAdapter(Post i_Post) // (for Lior)i think we can remove this c'tor, its only for databinding to be able to change post content
         {
             
             this.r_Post = i_Post;
 
+        }
+        public PostAdapter()
+        {
         }
 
         public void AttachListener(IPostAdapterLIstener i_listener)
@@ -49,7 +53,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         public static List<PostAdapter> CreateAdapterPosts(FacebookObjectCollection<Post> i_Posts)
         {
-
+            CountNewPosts = 0;
             List<PostAdapter> wrappedPosts = new List<PostAdapter>();
 
             foreach (Post post in i_Posts)
@@ -60,26 +64,27 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
             if(wrappedPosts.Count > postCount)
             {
+                CountNewPosts = wrappedPosts.Count - postCount;
                 postCount = wrappedPosts.Count;
-                ReportWhenUpdate(wrappedPosts.Count-postCount);
+                //ReportWhenUpdate(wrappedPosts.Count-postCount);   
+                notifyListenersAboutNewPosts();
             }
             
             return wrappedPosts;
 
         }
 
-        private static void ReportWhenUpdate(int CountNewPosts)
-        {
-            notifyListeners(CountNewPosts);
-        }
 
-        private static void notifyListeners(int CountNewPosts)
+        private static void notifyListenersAboutNewPosts()
         {
-            foreach(IPostAdapterLIstener observer in lIsteners)
+            if(CountNewPosts!=0)
             {
-               
-                //observer.update(CountNewPosts);
+                foreach (IPostAdapterLIstener observer in lIsteners)
+                {
+                    observer.update();
+                }
             }
+         
         }
     }
 
