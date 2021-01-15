@@ -1,20 +1,15 @@
-﻿using System;
+﻿using FacebookWrapper.ObjectModel;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FacebookWrapper;
-using Facebook;
-using FacebookWrapper.ObjectModel;
-using System.Runtime.CompilerServices;
-using System.Threading;
 
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
+
+    public interface IPostAdapterLIstener
+    {
+         int CountNewPosts { get; set; }
+        //void update(int i_CountNewPosts);
+    }
 
     public class PostAdapter
     {
@@ -22,12 +17,25 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private readonly Post r_Post;
 
         private string m_PostDescription;
+        public static int postCount  { get; private set; } = 0;
+        private static readonly List<IPostAdapterLIstener> lIsteners=new List<IPostAdapterLIstener>();
+
 
         public PostAdapter(Post i_Post)
         {
-
+            
             this.r_Post = i_Post;
 
+        }
+
+        public void AttachListener(IPostAdapterLIstener i_listener)
+        {
+            lIsteners.Add(i_listener);
+        }
+
+        public void DetachListener(IPostAdapterLIstener i_listener)
+        {
+            lIsteners.Remove(i_listener);
         }
 
         public string PostDescription
@@ -50,13 +58,29 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 wrappedPosts.Add(new PostAdapter(post));
 
             }
-
+            if(wrappedPosts.Count > postCount)
+            {
+                postCount = wrappedPosts.Count;
+                ReportWhenUpdate(wrappedPosts.Count-postCount);
+            }
+            
             return wrappedPosts;
 
         }
 
+        private static void ReportWhenUpdate(int CountNewPosts)
+        {
+            notifyListeners(CountNewPosts);
+        }
 
-
+        private static void notifyListeners(int CountNewPosts)
+        {
+            foreach(IPostAdapterLIstener observer in lIsteners)
+            {
+               
+                //observer.update(CountNewPosts);
+            }
+        }
     }
 
 }

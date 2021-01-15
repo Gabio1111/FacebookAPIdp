@@ -156,6 +156,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
+
+
         //Posts
         private void fetchPosts()
         {
@@ -186,7 +188,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                     }
               
                 }
-
+                FormMainFacade.Instance.update()
             
        
         }
@@ -787,6 +789,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
+        private void pictureBoxRefresh_Click(object sender, EventArgs e)
+        {
+            fetchLoggedInUser();
+        }
     }
 
 }

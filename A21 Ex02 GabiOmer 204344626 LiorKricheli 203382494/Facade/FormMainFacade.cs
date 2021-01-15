@@ -16,12 +16,13 @@ using System.Threading;
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
 
-    public class FormMainFacade
+    public class FormMainFacade:IPostAdapterLIstener
     {
 
         public UserProxy LoggedInUser { get; set; }
 
         public LoginResult LoginResult { get; set; }
+
 
         private static FormMainFacade s_FormMainFacade;
 
@@ -224,6 +225,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             return posts;
 
         }
+
+         public void update(int i_CountNewPosts)
+        {
+            return 
+        }
+      
+
+        
 
         public FacebookObjectCollection<Checkin> GetCheckins()
         {

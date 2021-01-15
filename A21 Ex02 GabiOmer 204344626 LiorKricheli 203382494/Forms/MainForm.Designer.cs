@@ -30,6 +30,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panelDetailsOfUser = new System.Windows.Forms.Panel();
             this.nameLabel1 = new System.Windows.Forms.Label();
             this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -115,7 +116,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelAnalyzer = new System.Windows.Forms.Label();
             this.checkinsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.postAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
@@ -124,6 +124,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.postAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.panelDetailsOfUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -176,8 +178,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDetailsOfUser
@@ -282,6 +285,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBoxRefresh);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.imageNormalPictureBox);
             this.splitContainer1.Panel1.Controls.Add(this.labelCountFriends);
@@ -1144,10 +1148,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.checkinsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Checkin);
             // 
-            // postAdapterBindingSource
-            // 
-            this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
-            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.buttonSave);
@@ -1242,6 +1242,21 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.radioButton1.Text = "1";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // postAdapterBindingSource
+            // 
+            this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRefresh.Image")));
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(205, 52);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(43, 40);
+            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRefresh.TabIndex = 30;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1316,9 +1331,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1419,6 +1435,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.PictureBox pictureBoxRefresh;
     }
 }
 
