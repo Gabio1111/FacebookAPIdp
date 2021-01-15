@@ -13,6 +13,7 @@ using FacebookWrapper.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Net.Http.Headers;
 
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
@@ -77,7 +78,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             new Thread(featchStaticticOfUser).Start();
 
-            new Thread(fetchFavouriteTeams).Start();
+            new Thread(fetchPages).Start();
 
         }
 
@@ -101,7 +102,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             base.OnShown(e);
 
-            tabControl1.Enabled = true;
+            tabControlCreatePost.Enabled = true;
 
             imageNormalPictureBox.Visible = true;
 
@@ -162,95 +163,99 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private void fetchPosts()
         {
 
-            //if (InvokeRequired)
-            //{
+            if (InvokeRequired)
+            {
 
-            //    this.Invoke(new Action(() => postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts()));
+                this.Invoke(new Action(() => postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts()));
 
-            //}
-            //else
-            //{
+            }
+            else
+            {
 
-            //    postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts();
+                postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts();
 
-            //}
+            }
 
-            //r_FetchersThread.Join();
-            int Count = 0;
-                foreach(PostAdapter post in FormMainFacade.Instance.GetPosts())
-                {
-                    if(post.PostDescription!=null)
-                    {
-                        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.PostDescription)));
-                        Count++;
-                        if (Count == 10 )
-                            break;
-                    }
-              
-                }
-
+            r_FetchersThread.Join();
+           
         }
 
         //Albums
+        #region Album And Selected Albums
         private void fetchAlbums()
         {
 
-            listBoxAlbums.Invoke(new Action(() => listBoxAlbums.DisplayMember = "Name"));
+            //listBoxAlbums.Invoke(new Action(() => listBoxAlbums.DisplayMember = "Name"));
 
-            if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums == null)
+            //if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums == null)
+            //{
+
+            //    MessageBox.Show("No Albums to retrieve :(");
+
+            //}
+
+            //foreach (Album album in FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums)
+            //{
+
+            //    listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
+
+            //}
+
+            if (InvokeRequired)
             {
 
-                MessageBox.Show("No Albums to retrieve :(");
+                Invoke(new Action(() => albumsBindingSource.DataSource = FormMainFacade.Instance.GetAlbums()));
 
             }
-
-            foreach (Album album in FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums)
+            else
             {
 
-                listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
+                this.userBindingSource1.DataSource = FormMainFacade.Instance.GetAlbums();
 
             }
 
         }
 
-        private void displaySelectedAlbum()
-        {
+        //private void displaySelectedAlbum()
+        //{
           
-            if (listBoxAlbums.SelectedItems.Count == 1) 
-            {
+        //    if (listBoxAlbums.SelectedItems.Count == 1) 
+        //    {
 
-                Album chosenAlbum = listBoxAlbums.SelectedItem as Album;
+        //        Album chosenAlbum = listBoxAlbums.SelectedItem as Album;
 
-                if (chosenAlbum.PictureAlbumURL != null)
-                {
+        //        if (chosenAlbum.PictureAlbumURL != null)
+        //        {
 
-                    pictureBoxAlbums.LoadAsync(chosenAlbum.PictureAlbumURL);
+        //            pictureBoxAlbums.LoadAsync(chosenAlbum.PictureAlbumURL);
 
-                }
-                else
-                {
+        //        }
+        //        else
+        //        {
 
-                    pictureBoxAlbums.Image = pictureBoxAlbums.ErrorImage;
+        //            pictureBoxAlbums.Image = pictureBoxAlbums.ErrorImage;
 
-                }
+        //        }
 
-            }
+        //    }
 
-        }
+        //}
 
-        private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void listBoxAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        //{
 
-            if(r_FetchersThread.Join(1))
-            {
+        //    if(r_FetchersThread.Join(1))
+        //    {
 
-                displaySelectedAlbum();
+        //        displaySelectedAlbum();
 
-            }
+        //    }
 
-        }
+        //}
+        #endregion
 
         //Friend List
+        #region Friend List And Selected Friend
         private void featchFriendList()
         {
           
@@ -314,36 +319,41 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        //Checkins
-        private void fetchFavouriteTeams()
+        #endregion
+        
+        //Page
+        #region Pages And Selected Index Changed
+        private void fetchPages()
         {
             if(FormMainFacade.Instance.LoggedInUser.LoggedUser.FavofriteTeams!=null)
             {
-                listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.DisplayMember = "Name"));
+                listBoxPages.Invoke(new Action(() => listBoxPages.DisplayMember = "Name"));
 
                 foreach (Page favTeam in FormMainFacade.Instance.LoggedInUser.LoggedUser.FavofriteTeams)
                 {
 
-                    listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add(favTeam)));
+                    listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add(favTeam)));
 
                 }
             }
 
             else
             {
-                listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add("No Teams")));
+                listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add("No Teams")));
             }
 
 
             r_FetchersThread.Join();
 
         }
-        private void listBoxFavouriteTeams_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void listBoxPages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxFavouriteTeams.SelectedItems.Count == 1)
+
+            if (listBoxPages.SelectedItems.Count == 1)
             {
 
-                Page chosenTeam = listBoxFavouriteTeams.SelectedItem as Page;
+                Page chosenTeam = listBoxPages.SelectedItem as Page;
 
                 if (chosenTeam.PictureNormalURL != null)
                 {
@@ -359,8 +369,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 }
 
             }
+
         }
 
+        #endregion
+        
         //Logout
         private void btLogout_Click(object sender, EventArgs e)
         {
@@ -370,6 +383,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         }
 
         ////Featchers
+
+        #region Nearest Friend
+
         private void bNearestFriends_Click(object sender, EventArgs e)
         {
 
@@ -431,52 +447,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        private void buttonClearFA_Click(object sender, EventArgs e)
-        {
+        #endregion
 
-            pictureBoxFriendFA.Image = null;
-
-            pictureBoxUserFA.Image = null;
-
-            labelFriendNameFA.Text = string.Empty;
-
-            labelUserNameFA.Text = string.Empty;
-
-            labelMSum.Text = string.Empty;
-
-            labelFsum.Text = string.Empty;
-
-        }
-        
-        private void buttonFA_Click(object sender, EventArgs e)
-        {
-
-            fetchFriendAnalyzer();
-
-        }
-
-        private void tabControl1_Enter(object sender, EventArgs e)
-        {
-
-            if(m_Analyzer == 0)
-            {
-
-                new Thread(() =>
-                {
-
-                    this.Invoke(new Action(() =>
-                    {
-
-                        m_Analyzer = FeatureFactory.Instance.Create(FormMainFacade.Instance.LoggedInUser.LoggedUser).InitiateFriendAnalyzer(FormMainFacade.Instance.LoggedInUser.LoggedUser);
-
-                    }));
-
-                }).Start();
-
-            }
-       
-        }
-
+        #region Friend Analyzer 
         private void fetchFriendAnalyzer()
         {
 
@@ -542,6 +515,34 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             labelFsum.Text = string.Format("{0}", avarageOfFriends);
 
         }
+
+        private void buttonClearFA_Click(object sender, EventArgs e)
+        {
+
+            pictureBoxFriendFA.Image = null;
+
+            pictureBoxUserFA.Image = null;
+
+            labelFriendNameFA.Text = string.Empty;
+
+            labelUserNameFA.Text = string.Empty;
+
+            labelMSum.Text = string.Empty;
+
+            labelFsum.Text = string.Empty;
+
+        }
+
+        private void buttonFA_Click(object sender, EventArgs e)
+        {
+
+            fetchFriendAnalyzer();
+
+        }
+
+        #endregion
+
+        #region Friend Matcher
 
         private void fetchFriendMatcher()
         {
@@ -638,6 +639,30 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             RadioButton checkedButton = panel7.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked = false);
 
             MessageBox.Show("Click the 'Show possible match' button to try again");
+
+        }
+
+        #endregion
+
+        private void tabControl1_Enter(object sender, EventArgs e)
+        {
+
+            if (m_Analyzer == 0)
+            {
+
+                new Thread(() =>
+                {
+
+                    this.Invoke(new Action(() =>
+                    {
+
+                        m_Analyzer = FeatureFactory.Instance.Create(FormMainFacade.Instance.LoggedInUser.LoggedUser).InitiateFriendAnalyzer(FormMainFacade.Instance.LoggedInUser.LoggedUser);
+
+                    }));
+
+                }).Start();
+
+            }
 
         }
 
@@ -780,24 +805,46 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        private void postDescriptionTextBox_Validated(object sender, EventArgs e)
-        {
+        //private void postDescriptionTextBox_Validated(object sender, EventArgs e)
+        //{
 
-            MessageBox.Show("Tap on list box to apply");
+        //    MessageBox.Show("Tap on list box to apply");
 
-        }
+        //}
 
+        /// <summary>
+        /// Refresh 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
+
             if(r_FetchersThread.Join(1) && r_UserDetailsThread.Join(1))
             {
-                listBoxAlbums.Items.Clear();
-                listBoxFavouriteTeams.Items.Clear();
-                listBoxPosts.Items.Clear();
-                listBoxFriendsList.Items.Clear();
-                new Thread(fetchLoggedInUser).Start(); 
+
+                listBoxAlbums.Controls.Clear();
+                listBoxPages.Controls.Clear();
+                listBoxPosts.Controls.Clear();
+                listBoxFriendsList.Controls.Clear();
+                new Thread(fetchLoggedInUser).Start();
+                tabControlCreatePost.Show();
+
             }    
-            //fetchLoggedInUser();  
+           
+        }
+
+        private void buttonCreatePost_Click(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(textBoxCreatePosts.Text))
+            {
+
+                PostAdapter post = new PostAdapter(null);
+                post.PostDescription = textBoxCreatePosts.Text;
+
+            }
+
         }
     }
 

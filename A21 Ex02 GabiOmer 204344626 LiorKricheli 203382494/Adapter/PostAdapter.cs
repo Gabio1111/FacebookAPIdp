@@ -8,7 +8,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
     public interface IPostAdapterLIstener
     {
 
-        void update();
+        void Update(Post i_Post);
+
     }
 
     public class PostAdapter
@@ -19,7 +20,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private string m_PostDescription;
         public static int postCount  { get; private set; } = 0;
         public static int CountNewPosts { get;  private set; }
-        private static readonly List<IPostAdapterLIstener> lIsteners=new List<IPostAdapterLIstener>();
+        private static readonly List<IPostAdapterLIstener> lIsteners = new List<IPostAdapterLIstener>();
 
 
         public PostAdapter(Post i_Post) // (for Lior)i think we can remove this c'tor, its only for databinding to be able to change post content
@@ -28,18 +29,23 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.r_Post = i_Post;
 
         }
+
         public PostAdapter()
         {
         }
 
         public void AttachListener(IPostAdapterLIstener i_listener)
         {
+
             lIsteners.Add(i_listener);
+
         }
 
         public void DetachListener(IPostAdapterLIstener i_listener)
         {
+
             lIsteners.Remove(i_listener);
+
         }
 
         public string PostDescription
@@ -53,6 +59,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         public static List<PostAdapter> CreateAdapterPosts(FacebookObjectCollection<Post> i_Posts)
         {
+
             CountNewPosts = 0;
             List<PostAdapter> wrappedPosts = new List<PostAdapter>();
 
@@ -62,6 +69,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 wrappedPosts.Add(new PostAdapter(post));
 
             }
+
             if(wrappedPosts.Count > postCount)
             {
                 CountNewPosts = wrappedPosts.Count - postCount;
@@ -77,12 +85,17 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         private static void notifyListenersAboutNewPosts()
         {
-            if(CountNewPosts!=0)
+
+            if(CountNewPosts != 0)
             {
+
                 foreach (IPostAdapterLIstener observer in lIsteners)
                 {
-                    observer.update();
+
+                    observer.Update(r_Post);
+
                 }
+
             }
          
         }

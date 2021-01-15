@@ -16,23 +16,19 @@ using System.Threading;
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
 
-
-    public class FormMainFacade:IPostAdapterLIstener
+    public class FormMainFacade
     {
 
         public UserProxy LoggedInUser { get; set; }
 
         public LoginResult LoginResult { get; set; }
 
-
         private static FormMainFacade s_FormMainFacade;
-
-        private PostAdapter postAdapter;
 
         private FormMainFacade()
         {
-            postAdapter = new PostAdapter();
-            postAdapter.AttachListener(this as IPostAdapterLIstener);
+
+            
             
         }
                    
@@ -234,32 +230,50 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        public void update()
+        public void Update()
         {
             MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
         }
 
-        public FacebookObjectCollection<Checkin> GetCheckins()
+        internal FacebookObjectCollection<Album> GetAlbums()
         {
 
-            FacebookObjectCollection<Checkin> checkin;
+            FacebookObjectCollection<Album> albums;
 
             try
             {
-
-                checkin = LoggedInUser.LoggedUser.Checkins;
-
+                albums = LoggedInUser.LoggedUser.Albums;
             }
             catch (Exception)
             {
 
-                throw new Facebook.FacebookApiException("Couldn't fetch user's checkins.");
+                throw new Facebook.FacebookApiException("Couldn't fetch user's Albums.");
 
             }
 
-            return checkin;
-
+            return albums;
         }
+
+        //public FacebookObjectCollection<Checkin> GetCheckins()
+        //{
+
+        //    FacebookObjectCollection<Checkin> checkin;
+
+        //    try
+        //    {
+
+        //        checkin = LoggedInUser.LoggedUser.Checkins;
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+
+        //    }
+
+        //    return checkin;
+
+        //}
 
         public void LoggedOutFinished()
         {
