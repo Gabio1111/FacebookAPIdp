@@ -34,7 +34,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if (eDistance.Equals(Enums.eDistanceMethod.farOffFriends))
             {
 
-                m_CloseFriends = new NearestFriends(m_loggedUser) { distanceStrategy = (distType, distance, radius) => distType == Enums.eDistanceMethod.farOffFriends && distance >= 100 };
+                m_CloseFriends = new NearestFriends(m_loggedUser) { distanceStrategy = (distType, distance, radius) => distType == Enums.eDistanceMethod.farOffFriends && distance >= radius };
 
             }
             else

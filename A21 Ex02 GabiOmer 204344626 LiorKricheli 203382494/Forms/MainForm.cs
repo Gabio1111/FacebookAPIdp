@@ -379,8 +379,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             if(checkBoxFarFriends.Checked)
             {
-                numericUpDownRadius.Enabled = false;
-                MessageBox.Show("radius scroller is irrelevant, the default radius is set to 100km");
+               
                 featchNearesrFriend(chosenRadius=0,Enums.eDistanceMethod.farOffFriends);
             }
             else
@@ -603,6 +602,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                     labelFriend2Name.Text = string.Format("Null");
 
                 }
+                panel5.Enabled = true;
 
             }
             else
@@ -616,7 +616,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         private void buttonFriendMatcher_Click(object sender, EventArgs e)
         {
-
+            
             fetchFriendMatcher();
 
         }

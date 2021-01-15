@@ -58,6 +58,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.labelEditPost = new System.Windows.Forms.Label();
             this.postDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
@@ -88,17 +89,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel7 = new System.Windows.Forms.Panel();
             this.labelFriend2Name = new System.Windows.Forms.Label();
             this.labelFriend1Name = new System.Windows.Forms.Label();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.labelRank = new System.Windows.Forms.Label();
-            this.buttonReset = new System.Windows.Forms.Button();
             this.labelMatch = new System.Windows.Forms.Label();
             this.pictureBoxMatch2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxMatch1 = new System.Windows.Forms.PictureBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.buttonFriendMatcher = new System.Windows.Forms.Button();
             this.labelRadius = new System.Windows.Forms.Label();
             this.numericUpDownRadius = new System.Windows.Forms.NumericUpDown();
@@ -122,7 +116,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelAnalyzer = new System.Windows.Forms.Label();
             this.checkinsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.postAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panelDetailsOfUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -176,6 +177,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).BeginInit();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDetailsOfUser
@@ -496,6 +498,13 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer4.SplitterDistance = 232;
             this.splitContainer4.SplitterWidth = 2;
             this.splitContainer4.TabIndex = 0;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(209, 30);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(13, 202);
+            this.vScrollBar1.TabIndex = 5;
             // 
             // labelEditPost
             // 
@@ -832,7 +841,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // checkBoxFarFriends
             // 
             this.checkBoxFarFriends.AutoSize = true;
-            this.checkBoxFarFriends.Location = new System.Drawing.Point(198, 62);
+            this.checkBoxFarFriends.Location = new System.Drawing.Point(3, 38);
             this.checkBoxFarFriends.Name = "checkBoxFarFriends";
             this.checkBoxFarFriends.Size = new System.Drawing.Size(107, 17);
             this.checkBoxFarFriends.TabIndex = 5;
@@ -845,19 +854,13 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BackColor = System.Drawing.Color.Thistle;
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel7.Controls.Add(this.panel5);
             this.panel7.Controls.Add(this.labelFriend2Name);
             this.panel7.Controls.Add(this.labelFriend1Name);
-            this.panel7.Controls.Add(this.buttonSave);
             this.panel7.Controls.Add(this.labelRank);
-            this.panel7.Controls.Add(this.buttonReset);
             this.panel7.Controls.Add(this.labelMatch);
             this.panel7.Controls.Add(this.pictureBoxMatch2);
             this.panel7.Controls.Add(this.pictureBoxMatch1);
-            this.panel7.Controls.Add(this.radioButton5);
-            this.panel7.Controls.Add(this.radioButton4);
-            this.panel7.Controls.Add(this.radioButton3);
-            this.panel7.Controls.Add(this.radioButton2);
-            this.panel7.Controls.Add(this.radioButton1);
             this.panel7.Controls.Add(this.buttonFriendMatcher);
             this.panel7.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel7.Location = new System.Drawing.Point(1, 255);
@@ -883,16 +886,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelFriend1Name.TabIndex = 12;
             this.labelFriend1Name.Text = "[First Match]";
             // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(102, 197);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(113, 23);
-            this.buttonSave.TabIndex = 11;
-            this.buttonSave.Text = "Save Ranking";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
-            // 
             // labelRank
             // 
             this.labelRank.AutoSize = true;
@@ -901,16 +894,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelRank.Size = new System.Drawing.Size(86, 13);
             this.labelRank.TabIndex = 10;
             this.labelRank.Text = "Rank the match!";
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(268, 197);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(47, 23);
-            this.buttonReset.TabIndex = 9;
-            this.buttonReset.Text = "Reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // labelMatch
             // 
@@ -938,66 +921,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.pictureBoxMatch1.Size = new System.Drawing.Size(100, 67);
             this.pictureBoxMatch1.TabIndex = 6;
             this.pictureBoxMatch1.TabStop = false;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(221, 165);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(31, 17);
-            this.radioButton5.TabIndex = 5;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Tag = "5";
-            this.radioButton5.Text = "5";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(184, 165);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(31, 17);
-            this.radioButton4.TabIndex = 4;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Tag = "4";
-            this.radioButton4.Text = "4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(147, 165);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(31, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Tag = "3";
-            this.radioButton3.Text = "3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(110, 165);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(31, 17);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Tag = "2";
-            this.radioButton2.Text = "2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(73, 165);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(31, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Tag = "1";
-            this.radioButton1.Text = "1";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // buttonFriendMatcher
             // 
@@ -1225,12 +1148,99 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
             // 
-            // vScrollBar1
+            // panel5
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(209, 30);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(13, 202);
-            this.vScrollBar1.TabIndex = 5;
+            this.panel5.Controls.Add(this.buttonSave);
+            this.panel5.Controls.Add(this.buttonReset);
+            this.panel5.Controls.Add(this.radioButton5);
+            this.panel5.Controls.Add(this.radioButton4);
+            this.panel5.Controls.Add(this.radioButton3);
+            this.panel5.Controls.Add(this.radioButton2);
+            this.panel5.Controls.Add(this.radioButton1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Enabled = false;
+            this.panel5.Location = new System.Drawing.Point(0, 152);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(314, 70);
+            this.panel5.TabIndex = 1;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(90, 35);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(113, 23);
+            this.buttonSave.TabIndex = 18;
+            this.buttonSave.Text = "Save Ranking";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(256, 35);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(47, 23);
+            this.buttonReset.TabIndex = 17;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(209, 3);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(31, 17);
+            this.radioButton5.TabIndex = 16;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Tag = "5";
+            this.radioButton5.Text = "5";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(172, 3);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(31, 17);
+            this.radioButton4.TabIndex = 15;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Tag = "4";
+            this.radioButton4.Text = "4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(135, 3);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(31, 17);
+            this.radioButton3.TabIndex = 14;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "3";
+            this.radioButton3.Text = "3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(98, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(31, 17);
+            this.radioButton2.TabIndex = 13;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Tag = "2";
+            this.radioButton2.Text = "2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(61, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(31, 17);
+            this.radioButton1.TabIndex = 12;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "1";
+            this.radioButton1.Text = "1";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1307,6 +1317,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1351,17 +1363,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label labelFriend2Name;
         private System.Windows.Forms.Label labelFriend1Name;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelRank;
-        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Label labelMatch;
         private System.Windows.Forms.PictureBox pictureBoxMatch2;
         private System.Windows.Forms.PictureBox pictureBoxMatch1;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button buttonFriendMatcher;
         private System.Windows.Forms.Label labelRadius;
         private System.Windows.Forms.NumericUpDown numericUpDownRadius;
@@ -1406,6 +1411,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxFarFriends;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 
