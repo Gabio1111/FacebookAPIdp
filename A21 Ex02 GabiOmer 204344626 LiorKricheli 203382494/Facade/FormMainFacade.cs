@@ -16,7 +16,7 @@ using System.Threading;
 namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 {
 
-    public class FormMainFacade
+    public class FormMainFacade: ObserverLiscener
     {
 
         public UserProxy LoggedInUser { get; set; }
@@ -31,8 +31,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             
             
         }
-                   
-
+             
         public UserProxy LoginToMainForm()
         {
 
@@ -110,7 +109,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                     throw new Facebook.FacebookApiException("");
                 }
-                
+
+               
                 return countPosts;
             }
 
@@ -226,14 +226,24 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             }
 
+            if (NotifyAbstractParentPopulateRowsCompleted != null)
+            {
+
+
+                NotifyAbstractParentPopulateRowsCompleted.Invoke();
+
+            }
+
             return posts;
 
         }
 
-        public void Update()
-        {
-            MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
-        }
+        //public void Update()
+        //{
+
+        //    MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
+        
+        //}
 
         internal FacebookObjectCollection<Album> GetAlbums()
         {
@@ -242,7 +252,17 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             try
             {
+
                 albums = LoggedInUser.LoggedUser.Albums;
+
+                if (NotifyAbstractParentPopulateRowsCompleted != null)
+                {
+
+
+                    NotifyAbstractParentPopulateRowsCompleted.Invoke();
+
+                }
+
             }
             catch (Exception)
             {
@@ -251,30 +271,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             }
 
+          
+
             return albums;
         }
-
-        //public FacebookObjectCollection<Checkin> GetCheckins()
-        //{
-
-        //    FacebookObjectCollection<Checkin> checkin;
-
-        //    try
-        //    {
-
-        //        checkin = LoggedInUser.LoggedUser.Checkins;
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-
-        //    }
-
-        //    return checkin;
-
-        //}
-
+        
         public void LoggedOutFinished()
         {
             

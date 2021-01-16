@@ -176,6 +176,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             }
 
+           
+
             r_FetchersThread.Join();
            
         }
@@ -460,39 +462,39 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if (FormMainFacade.Instance.LoggedInUser.LoggedUser.PictureSmallURL != null)
             {
 
-                pictureBoxUserFA.LoadAsync(FormMainFacade.Instance.LoggedInUser.LoggedUser.PictureSmallURL);
+                pictureBoxUserAnalyzer.LoadAsync(FormMainFacade.Instance.LoggedInUser.LoggedUser.PictureSmallURL);
 
             }
             else
             {
 
-                pictureBoxUserFA.Image = pictureBoxUserFA.ErrorImage;
+                pictureBoxUserAnalyzer.Image = pictureBoxUserAnalyzer.ErrorImage;
 
             }
 
             if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].PictureSmallURL != null)
             {
 
-                pictureBoxFriendFA.LoadAsync(FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].PictureSmallURL);
+                pictureBoxFriendAnalyzer.LoadAsync(FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].PictureSmallURL);
 
             }
             else
             {
 
-                pictureBoxFriendFA.Image = pictureBoxFriendFA.ErrorImage;
+                pictureBoxFriendAnalyzer.Image = pictureBoxFriendAnalyzer.ErrorImage;
 
             }
 
             if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].Name != null)
             {
 
-                labelFriendNameFA.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].Name;
+                labelFriendNameAnslyzer.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex].Name;
 
             }
             else
             {
 
-                labelFriendNameFA.Text = string.Format("Null");
+                labelFriendNameAnslyzer.Text = string.Format("Null");
 
             }
          
@@ -500,36 +502,36 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Name != null)
             {
 
-                labelUserNameFA.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Name;
+                labelUserNameAnalyzer.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Name;
 
             }
             else
             {
 
-                labelUserNameFA.Text = string.Format("Null");
+                labelUserNameAnalyzer.Text = string.Format("Null");
 
             }
 
-            labelMSum.Text = string.Format("{0}", m_Analyzer);
+            labelMySumAvarage.Text = string.Format("{0}", m_Analyzer);
 
-            labelFsum.Text = string.Format("{0}", avarageOfFriends);
+            labelFriendsSumAnalyzer.Text = string.Format("{0}", avarageOfFriends);
 
         }
 
         private void buttonClearFA_Click(object sender, EventArgs e)
         {
 
-            pictureBoxFriendFA.Image = null;
+            pictureBoxFriendAnalyzer.Image = null;
 
-            pictureBoxUserFA.Image = null;
+            pictureBoxUserAnalyzer.Image = null;
 
-            labelFriendNameFA.Text = string.Empty;
+            labelFriendNameAnslyzer.Text = string.Format("[Name Of Friends]");
 
-            labelUserNameFA.Text = string.Empty;
+            labelUserNameAnalyzer.Text = string.Format("[My Name]");
 
-            labelMSum.Text = string.Empty;
+            labelMySumAvarage.Text = string.Format("[My Average]");
 
-            labelFsum.Text = string.Empty;
+            labelFriendsSumAnalyzer.Text = string.Format("[Friends Average]");
 
         }
 

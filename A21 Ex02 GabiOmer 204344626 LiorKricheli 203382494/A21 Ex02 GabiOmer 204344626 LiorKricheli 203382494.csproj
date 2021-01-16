@@ -76,6 +76,8 @@
     <Compile Include="Features\FriendAnalyzer.cs" />
     <Compile Include="Features\MatchMyFriends.cs" />
     <Compile Include="Features\Strategy\NearestFriends.cs" />
+    <Compile Include="ObserverLiscener.cs" />
+    <Compile Include="Observer\IObserverLiscener.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proxy\UserProxy.cs" />

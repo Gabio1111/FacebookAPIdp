@@ -42,6 +42,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.textBoxNameChange = new System.Windows.Forms.TextBox();
             this.buttonEditAbout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
@@ -87,7 +88,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelAlbum = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabCreatePosts = new System.Windows.Forms.TabPage();
+            this.panelMeanCreatePost = new System.Windows.Forms.Panel();
+            this.textBoxCreatePosts = new System.Windows.Forms.TextBox();
+            this.buttonCreatePost = new System.Windows.Forms.Button();
+            this.tabFeatures = new System.Windows.Forms.TabPage();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.checkBoxFarFriends = new System.Windows.Forms.CheckBox();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -114,28 +119,25 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelSavedFriendsAndMatch = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.listBoxFriendsAndMatch = new System.Windows.Forms.ListBox();
-            this.buttonClearFA = new System.Windows.Forms.Button();
-            this.labelUserNameFA = new System.Windows.Forms.Label();
-            this.labelFriendNameFA = new System.Windows.Forms.Label();
-            this.pictureBoxUserFA = new System.Windows.Forms.PictureBox();
-            this.pictureBoxFriendFA = new System.Windows.Forms.PictureBox();
-            this.labelMSum = new System.Windows.Forms.Label();
-            this.labelFsum = new System.Windows.Forms.Label();
+            this.buttonClearScreenFriendsAnalyzer = new System.Windows.Forms.Button();
+            this.labelUserNameAnalyzer = new System.Windows.Forms.Label();
+            this.labelFriendNameAnslyzer = new System.Windows.Forms.Label();
+            this.pictureBoxUserAnalyzer = new System.Windows.Forms.PictureBox();
+            this.pictureBoxFriendAnalyzer = new System.Windows.Forms.PictureBox();
+            this.labelMySumAvarage = new System.Windows.Forms.Label();
+            this.labelFriendsSumAnalyzer = new System.Windows.Forms.Label();
             this.labelFriend = new System.Windows.Forms.Label();
             this.labelMe = new System.Windows.Forms.Label();
-            this.buttonFA = new System.Windows.Forms.Button();
+            this.buttonFriendsAnalyzer = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelAnalyzer = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.panelMeanCreatePost = new System.Windows.Forms.Panel();
-            this.textBoxCreatePosts = new System.Windows.Forms.TextBox();
-            this.buttonCreatePost = new System.Windows.Forms.Button();
             this.panelDetailsOfUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
             this.tabControlCreatePost.SuspendLayout();
@@ -170,7 +172,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.pictureSmallURLPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumsBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabCreatePosts.SuspendLayout();
+            this.panelMeanCreatePost.SuspendLayout();
+            this.tabFeatures.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
@@ -182,11 +186,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRadius)).BeginInit();
             this.panelFA.SuspendLayout();
             this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserFA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserAnalyzer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendAnalyzer)).BeginInit();
             this.panel8.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.panelMeanCreatePost.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelDetailsOfUser
@@ -291,6 +293,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.splitContainer1.Panel1.AutoScroll = true;
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             this.splitContainer1.Panel1.Controls.Add(this.pictureBoxRefresh);
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.imageNormalPictureBox);
@@ -315,10 +318,18 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 12;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(200, 75);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 38);
+            this.pictureBox1.TabIndex = 31;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureBoxRefresh
             // 
             this.pictureBoxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRefresh.Image")));
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(205, 52);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(199, 12);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
             this.pictureBoxRefresh.Size = new System.Drawing.Size(43, 40);
             this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -451,8 +462,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // tabControlCreatePost
             // 
             this.tabControlCreatePost.Controls.Add(this.tabPageProfile);
-            this.tabControlCreatePost.Controls.Add(this.tabPage3);
-            this.tabControlCreatePost.Controls.Add(this.tabPage1);
+            this.tabControlCreatePost.Controls.Add(this.tabCreatePosts);
+            this.tabControlCreatePost.Controls.Add(this.tabFeatures);
             this.tabControlCreatePost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlCreatePost.Enabled = false;
             this.tabControlCreatePost.Location = new System.Drawing.Point(0, 0);
@@ -791,7 +802,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.pictureSmallURLPictureBox.Location = new System.Drawing.Point(17, 44);
             this.pictureSmallURLPictureBox.Name = "pictureSmallURLPictureBox";
             this.pictureSmallURLPictureBox.Size = new System.Drawing.Size(120, 99);
-            this.pictureSmallURLPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureSmallURLPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureSmallURLPictureBox.TabIndex = 4;
             this.pictureSmallURLPictureBox.TabStop = false;
             // 
@@ -835,17 +846,55 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelAlbum.TabIndex = 0;
             this.labelAlbum.Text = "Albums";
             // 
-            // tabPage3
+            // tabCreatePosts
             // 
-            this.tabPage3.Controls.Add(this.splitContainer3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage3.Size = new System.Drawing.Size(668, 485);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Features";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabCreatePosts.Controls.Add(this.panelMeanCreatePost);
+            this.tabCreatePosts.Location = new System.Drawing.Point(4, 22);
+            this.tabCreatePosts.Name = "tabCreatePosts";
+            this.tabCreatePosts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCreatePosts.Size = new System.Drawing.Size(668, 485);
+            this.tabCreatePosts.TabIndex = 3;
+            this.tabCreatePosts.Text = "Create Posts";
+            this.tabCreatePosts.UseVisualStyleBackColor = true;
+            // 
+            // panelMeanCreatePost
+            // 
+            this.panelMeanCreatePost.Controls.Add(this.textBoxCreatePosts);
+            this.panelMeanCreatePost.Controls.Add(this.buttonCreatePost);
+            this.panelMeanCreatePost.Location = new System.Drawing.Point(98, 76);
+            this.panelMeanCreatePost.Name = "panelMeanCreatePost";
+            this.panelMeanCreatePost.Size = new System.Drawing.Size(453, 319);
+            this.panelMeanCreatePost.TabIndex = 0;
+            // 
+            // textBoxCreatePosts
+            // 
+            this.textBoxCreatePosts.Location = new System.Drawing.Point(4, 82);
+            this.textBoxCreatePosts.Multiline = true;
+            this.textBoxCreatePosts.Name = "textBoxCreatePosts";
+            this.textBoxCreatePosts.Size = new System.Drawing.Size(446, 154);
+            this.textBoxCreatePosts.TabIndex = 1;
+            // 
+            // buttonCreatePost
+            // 
+            this.buttonCreatePost.Location = new System.Drawing.Point(3, 45);
+            this.buttonCreatePost.Name = "buttonCreatePost";
+            this.buttonCreatePost.Size = new System.Drawing.Size(447, 23);
+            this.buttonCreatePost.TabIndex = 0;
+            this.buttonCreatePost.Text = "Upload";
+            this.buttonCreatePost.UseVisualStyleBackColor = true;
+            this.buttonCreatePost.Click += new System.EventHandler(this.buttonCreatePost_Click);
+            // 
+            // tabFeatures
+            // 
+            this.tabFeatures.Controls.Add(this.splitContainer3);
+            this.tabFeatures.Location = new System.Drawing.Point(4, 22);
+            this.tabFeatures.Margin = new System.Windows.Forms.Padding(2);
+            this.tabFeatures.Name = "tabFeatures";
+            this.tabFeatures.Padding = new System.Windows.Forms.Padding(2);
+            this.tabFeatures.Size = new System.Drawing.Size(668, 485);
+            this.tabFeatures.TabIndex = 2;
+            this.tabFeatures.Text = "Features";
+            this.tabFeatures.UseVisualStyleBackColor = true;
             // 
             // splitContainer3
             // 
@@ -1107,16 +1156,16 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panelFA.BackColor = System.Drawing.Color.Honeydew;
             this.panelFA.Controls.Add(this.labelSavedFriendsAndMatch);
             this.panelFA.Controls.Add(this.panel9);
-            this.panelFA.Controls.Add(this.buttonClearFA);
-            this.panelFA.Controls.Add(this.labelUserNameFA);
-            this.panelFA.Controls.Add(this.labelFriendNameFA);
-            this.panelFA.Controls.Add(this.pictureBoxUserFA);
-            this.panelFA.Controls.Add(this.pictureBoxFriendFA);
-            this.panelFA.Controls.Add(this.labelMSum);
-            this.panelFA.Controls.Add(this.labelFsum);
+            this.panelFA.Controls.Add(this.buttonClearScreenFriendsAnalyzer);
+            this.panelFA.Controls.Add(this.labelUserNameAnalyzer);
+            this.panelFA.Controls.Add(this.labelFriendNameAnslyzer);
+            this.panelFA.Controls.Add(this.pictureBoxUserAnalyzer);
+            this.panelFA.Controls.Add(this.pictureBoxFriendAnalyzer);
+            this.panelFA.Controls.Add(this.labelMySumAvarage);
+            this.panelFA.Controls.Add(this.labelFriendsSumAnalyzer);
             this.panelFA.Controls.Add(this.labelFriend);
             this.panelFA.Controls.Add(this.labelMe);
-            this.panelFA.Controls.Add(this.buttonFA);
+            this.panelFA.Controls.Add(this.buttonFriendsAnalyzer);
             this.panelFA.Controls.Add(this.panel8);
             this.panelFA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFA.Location = new System.Drawing.Point(0, 0);
@@ -1156,67 +1205,67 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.listBoxFriendsAndMatch.Size = new System.Drawing.Size(341, 100);
             this.listBoxFriendsAndMatch.TabIndex = 0;
             // 
-            // buttonClearFA
+            // buttonClearScreenFriendsAnalyzer
             // 
-            this.buttonClearFA.Location = new System.Drawing.Point(19, 55);
-            this.buttonClearFA.Name = "buttonClearFA";
-            this.buttonClearFA.Size = new System.Drawing.Size(75, 23);
-            this.buttonClearFA.TabIndex = 11;
-            this.buttonClearFA.Text = "Clear";
-            this.buttonClearFA.UseVisualStyleBackColor = true;
-            this.buttonClearFA.Click += new System.EventHandler(this.buttonClearFA_Click);
+            this.buttonClearScreenFriendsAnalyzer.Location = new System.Drawing.Point(19, 55);
+            this.buttonClearScreenFriendsAnalyzer.Name = "buttonClearScreenFriendsAnalyzer";
+            this.buttonClearScreenFriendsAnalyzer.Size = new System.Drawing.Size(75, 23);
+            this.buttonClearScreenFriendsAnalyzer.TabIndex = 11;
+            this.buttonClearScreenFriendsAnalyzer.Text = "Clear";
+            this.buttonClearScreenFriendsAnalyzer.UseVisualStyleBackColor = true;
+            this.buttonClearScreenFriendsAnalyzer.Click += new System.EventHandler(this.buttonClearFA_Click);
             // 
-            // labelUserNameFA
+            // labelUserNameAnalyzer
             // 
-            this.labelUserNameFA.AutoSize = true;
-            this.labelUserNameFA.Location = new System.Drawing.Point(261, 134);
-            this.labelUserNameFA.Name = "labelUserNameFA";
-            this.labelUserNameFA.Size = new System.Drawing.Size(35, 13);
-            this.labelUserNameFA.TabIndex = 10;
-            this.labelUserNameFA.Text = "label1";
+            this.labelUserNameAnalyzer.AutoSize = true;
+            this.labelUserNameAnalyzer.Location = new System.Drawing.Point(250, 134);
+            this.labelUserNameAnalyzer.Name = "labelUserNameAnalyzer";
+            this.labelUserNameAnalyzer.Size = new System.Drawing.Size(58, 13);
+            this.labelUserNameAnalyzer.TabIndex = 10;
+            this.labelUserNameAnalyzer.Text = "[My Name]";
             // 
-            // labelFriendNameFA
+            // labelFriendNameAnslyzer
             // 
-            this.labelFriendNameFA.AutoSize = true;
-            this.labelFriendNameFA.Location = new System.Drawing.Point(37, 134);
-            this.labelFriendNameFA.Name = "labelFriendNameFA";
-            this.labelFriendNameFA.Size = new System.Drawing.Size(35, 13);
-            this.labelFriendNameFA.TabIndex = 9;
-            this.labelFriendNameFA.Text = "label1";
+            this.labelFriendNameAnslyzer.AutoSize = true;
+            this.labelFriendNameAnslyzer.Location = new System.Drawing.Point(16, 134);
+            this.labelFriendNameAnslyzer.Name = "labelFriendNameAnslyzer";
+            this.labelFriendNameAnslyzer.Size = new System.Drawing.Size(92, 13);
+            this.labelFriendNameAnslyzer.TabIndex = 9;
+            this.labelFriendNameAnslyzer.Text = "[Name Of Friends]";
             // 
-            // pictureBoxUserFA
+            // pictureBoxUserAnalyzer
             // 
-            this.pictureBoxUserFA.Location = new System.Drawing.Point(233, 194);
-            this.pictureBoxUserFA.Name = "pictureBoxUserFA";
-            this.pictureBoxUserFA.Size = new System.Drawing.Size(100, 113);
-            this.pictureBoxUserFA.TabIndex = 8;
-            this.pictureBoxUserFA.TabStop = false;
+            this.pictureBoxUserAnalyzer.Location = new System.Drawing.Point(233, 194);
+            this.pictureBoxUserAnalyzer.Name = "pictureBoxUserAnalyzer";
+            this.pictureBoxUserAnalyzer.Size = new System.Drawing.Size(100, 113);
+            this.pictureBoxUserAnalyzer.TabIndex = 8;
+            this.pictureBoxUserAnalyzer.TabStop = false;
             // 
-            // pictureBoxFriendFA
+            // pictureBoxFriendAnalyzer
             // 
-            this.pictureBoxFriendFA.Location = new System.Drawing.Point(14, 194);
-            this.pictureBoxFriendFA.Name = "pictureBoxFriendFA";
-            this.pictureBoxFriendFA.Size = new System.Drawing.Size(100, 113);
-            this.pictureBoxFriendFA.TabIndex = 7;
-            this.pictureBoxFriendFA.TabStop = false;
+            this.pictureBoxFriendAnalyzer.Location = new System.Drawing.Point(14, 194);
+            this.pictureBoxFriendAnalyzer.Name = "pictureBoxFriendAnalyzer";
+            this.pictureBoxFriendAnalyzer.Size = new System.Drawing.Size(100, 113);
+            this.pictureBoxFriendAnalyzer.TabIndex = 7;
+            this.pictureBoxFriendAnalyzer.TabStop = false;
             // 
-            // labelMSum
+            // labelMySumAvarage
             // 
-            this.labelMSum.AutoSize = true;
-            this.labelMSum.Location = new System.Drawing.Point(247, 166);
-            this.labelMSum.Name = "labelMSum";
-            this.labelMSum.Size = new System.Drawing.Size(70, 13);
-            this.labelMSum.TabIndex = 6;
-            this.labelMSum.Text = "[My Average]";
+            this.labelMySumAvarage.AutoSize = true;
+            this.labelMySumAvarage.Location = new System.Drawing.Point(247, 166);
+            this.labelMySumAvarage.Name = "labelMySumAvarage";
+            this.labelMySumAvarage.Size = new System.Drawing.Size(70, 13);
+            this.labelMySumAvarage.TabIndex = 6;
+            this.labelMySumAvarage.Text = "[My Average]";
             // 
-            // labelFsum
+            // labelFriendsSumAnalyzer
             // 
-            this.labelFsum.AutoSize = true;
-            this.labelFsum.Location = new System.Drawing.Point(16, 166);
-            this.labelFsum.Name = "labelFsum";
-            this.labelFsum.Size = new System.Drawing.Size(90, 13);
-            this.labelFsum.TabIndex = 5;
-            this.labelFsum.Text = "[Friends Average]";
+            this.labelFriendsSumAnalyzer.AutoSize = true;
+            this.labelFriendsSumAnalyzer.Location = new System.Drawing.Point(16, 166);
+            this.labelFriendsSumAnalyzer.Name = "labelFriendsSumAnalyzer";
+            this.labelFriendsSumAnalyzer.Size = new System.Drawing.Size(90, 13);
+            this.labelFriendsSumAnalyzer.TabIndex = 5;
+            this.labelFriendsSumAnalyzer.Text = "[Friends Average]";
             // 
             // labelFriend
             // 
@@ -1238,15 +1287,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelMe.TabIndex = 3;
             this.labelMe.Text = "My Activity:";
             // 
-            // buttonFA
+            // buttonFriendsAnalyzer
             // 
-            this.buttonFA.Location = new System.Drawing.Point(219, 56);
-            this.buttonFA.Name = "buttonFA";
-            this.buttonFA.Size = new System.Drawing.Size(116, 23);
-            this.buttonFA.TabIndex = 2;
-            this.buttonFA.Text = "Get Statistics";
-            this.buttonFA.UseVisualStyleBackColor = true;
-            this.buttonFA.Click += new System.EventHandler(this.buttonFA_Click);
+            this.buttonFriendsAnalyzer.Location = new System.Drawing.Point(219, 56);
+            this.buttonFriendsAnalyzer.Name = "buttonFriendsAnalyzer";
+            this.buttonFriendsAnalyzer.Size = new System.Drawing.Size(116, 23);
+            this.buttonFriendsAnalyzer.TabIndex = 2;
+            this.buttonFriendsAnalyzer.Text = "Get Statistics";
+            this.buttonFriendsAnalyzer.UseVisualStyleBackColor = true;
+            this.buttonFriendsAnalyzer.Click += new System.EventHandler(this.buttonFA_Click);
             // 
             // panel8
             // 
@@ -1268,44 +1317,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelAnalyzer.TabIndex = 0;
             this.labelAnalyzer.Text = "Friend Analyzer";
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.panelMeanCreatePost);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(668, 485);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // panelMeanCreatePost
-            // 
-            this.panelMeanCreatePost.Controls.Add(this.textBoxCreatePosts);
-            this.panelMeanCreatePost.Controls.Add(this.buttonCreatePost);
-            this.panelMeanCreatePost.Location = new System.Drawing.Point(98, 76);
-            this.panelMeanCreatePost.Name = "panelMeanCreatePost";
-            this.panelMeanCreatePost.Size = new System.Drawing.Size(453, 319);
-            this.panelMeanCreatePost.TabIndex = 0;
-            // 
-            // textBoxCreatePosts
-            // 
-            this.textBoxCreatePosts.Location = new System.Drawing.Point(4, 82);
-            this.textBoxCreatePosts.Multiline = true;
-            this.textBoxCreatePosts.Name = "textBoxCreatePosts";
-            this.textBoxCreatePosts.Size = new System.Drawing.Size(446, 82);
-            this.textBoxCreatePosts.TabIndex = 1;
-            // 
-            // buttonCreatePost
-            // 
-            this.buttonCreatePost.Location = new System.Drawing.Point(3, 45);
-            this.buttonCreatePost.Name = "buttonCreatePost";
-            this.buttonCreatePost.Size = new System.Drawing.Size(447, 23);
-            this.buttonCreatePost.TabIndex = 0;
-            this.buttonCreatePost.Text = "Upload";
-            this.buttonCreatePost.UseVisualStyleBackColor = true;
-            this.buttonCreatePost.Click += new System.EventHandler(this.buttonCreatePost_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1323,6 +1334,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
             this.tabControlCreatePost.ResumeLayout(false);
@@ -1364,7 +1376,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.albumsBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.tabCreatePosts.ResumeLayout(false);
+            this.panelMeanCreatePost.ResumeLayout(false);
+            this.panelMeanCreatePost.PerformLayout();
+            this.tabFeatures.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
             this.splitContainer3.Panel2.ResumeLayout(false);
@@ -1380,13 +1395,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panelFA.ResumeLayout(false);
             this.panelFA.PerformLayout();
             this.panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserFA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserAnalyzer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendAnalyzer)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.panelMeanCreatePost.ResumeLayout(false);
-            this.panelMeanCreatePost.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1424,7 +1436,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.SplitContainer splitContainerAlbums;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label labelAlbum;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabFeatures;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label labelFriend2Name;
@@ -1442,16 +1454,16 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Label labelSavedFriendsAndMatch;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.ListBox listBoxFriendsAndMatch;
-        private System.Windows.Forms.Button buttonClearFA;
-        private System.Windows.Forms.Label labelUserNameFA;
-        private System.Windows.Forms.Label labelFriendNameFA;
-        private System.Windows.Forms.PictureBox pictureBoxUserFA;
-        private System.Windows.Forms.PictureBox pictureBoxFriendFA;
-        private System.Windows.Forms.Label labelMSum;
-        private System.Windows.Forms.Label labelFsum;
+        private System.Windows.Forms.Button buttonClearScreenFriendsAnalyzer;
+        private System.Windows.Forms.Label labelUserNameAnalyzer;
+        private System.Windows.Forms.Label labelFriendNameAnslyzer;
+        private System.Windows.Forms.PictureBox pictureBoxUserAnalyzer;
+        private System.Windows.Forms.PictureBox pictureBoxFriendAnalyzer;
+        private System.Windows.Forms.Label labelMySumAvarage;
+        private System.Windows.Forms.Label labelFriendsSumAnalyzer;
         private System.Windows.Forms.Label labelFriend;
         private System.Windows.Forms.Label labelMe;
-        private System.Windows.Forms.Button buttonFA;
+        private System.Windows.Forms.Button buttonFriendsAnalyzer;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label labelAnalyzer;
         private System.Windows.Forms.Label labelEditPost;
@@ -1488,10 +1500,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.PictureBox pictureSmallURLPictureBox;
         private System.Windows.Forms.BindingSource albumsBindingSource;
         private System.Windows.Forms.ListBox listBoxAlbums;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabCreatePosts;
         private System.Windows.Forms.Panel panelMeanCreatePost;
         private System.Windows.Forms.TextBox textBoxCreatePosts;
         private System.Windows.Forms.Button buttonCreatePost;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
