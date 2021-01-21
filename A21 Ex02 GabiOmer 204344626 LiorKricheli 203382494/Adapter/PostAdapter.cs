@@ -22,14 +22,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private static readonly List<IPostAdapterLIstener> lIsteners=new List<IPostAdapterLIstener>();
 
 
-        public PostAdapter(Post i_Post) // (for Lior)i think we can remove this c'tor, its only for databinding to be able to change post content
+        public PostAdapter(Post i_Post=null) 
         {
             
             this.r_Post = i_Post;
 
-        }
-        public PostAdapter()
-        {
         }
 
         public void AttachListener(IPostAdapterLIstener i_listener)
@@ -66,7 +63,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             {
                 CountNewPosts = wrappedPosts.Count - postCount;
                 postCount = wrappedPosts.Count;
-                //ReportWhenUpdate(wrappedPosts.Count-postCount);   
+         
                 notifyListenersAboutNewPosts();
             }
             

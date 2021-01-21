@@ -73,7 +73,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             new Thread(fetchAlbums).Start();
 
-            new Thread(featchFriendList).Start();
+            new Thread(fetchFriendList).Start();
 
             new Thread(featchStaticticOfUser).Start();
 
@@ -92,7 +92,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             labelCountAlbums.Invoke(new Action(() => labelCountAlbums.Text = string.Format("{0}", FormMainFacade.Instance.CountAlbums)));
 
-            labelCountCheckins.Invoke(new Action(() => labelCountCheckins.Text = string.Format("{0}", FormMainFacade.Instance.CountCheckins)));
+            //labelCountCheckins.Invoke(new Action(() => labelCountCheckins.Text = string.Format("{0}", FormMainFacade.Instance.CountCheckins)));
             
         }
        
@@ -161,33 +161,38 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         //Posts
         private void fetchPosts()
         {
-
+            
             //if (InvokeRequired)
             //{
+            if(listBoxPosts.DataSource==null)
+            {
+                listBoxPosts.Invoke(new Action(() => listBoxPosts.DataSource = postAdapterBindingSource));
+            }
 
-            //    this.Invoke(new Action(() => postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts()));
+            listBoxPosts.Invoke(new Action(() => listBoxPosts.DisplayMember = "PostDescription"));
+            this.Invoke(new Action(() => postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts()));
 
             //}
             //else
             //{
-
+            //    listBoxPosts.DataSource = postAdapterBindingSource;
             //    postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts();
 
             //}
 
-            //r_FetchersThread.Join();
-            int Count = 0;
-                foreach(PostAdapter post in FormMainFacade.Instance.GetPosts())
-                {
-                    if(post.PostDescription!=null)
-                    {
-                        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.PostDescription)));
-                        Count++;
-                        if (Count == 10 )
-                            break;
-                    }
-              
-                }
+            r_FetchersThread.Join();
+            //int Count = 0;
+            //foreach(PostAdapter post in FormMainFacade.Instance.GetPosts())
+            //{
+            //    if(post.PostDescription!=null)
+            //    {
+            //        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.PostDescription)));
+            //        //Count++;
+            //        //if (Count == 10 )
+            //        //    break;
+            //    }
+
+            //}
 
         }
 
@@ -197,20 +202,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             listBoxAlbums.Invoke(new Action(() => listBoxAlbums.DisplayMember = "Name"));
 
-            if (FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums == null)
+            using(IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.Albums))
             {
-
-                MessageBox.Show("No Albums to retrieve :(");
-
+                while(iterator.MoveNext())
+                {
+                    listBoxAlbums.Invoke(new Action(()=>listBoxAlbums.Items.Add(iterator.Current)));
+                }
             }
 
-            foreach (Album album in FormMainFacade.Instance.LoggedInUser.LoggedUser.Albums)
-            {
-
-                listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(album)));
-
-            }
-
+            r_FetchersThread.Join();
         }
 
         private void displaySelectedAlbum()
@@ -251,17 +251,19 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         }
 
         //Friend List
-        private void featchFriendList()
+        private void fetchFriendList()
         {
           
             listBoxFriendsList.Invoke(new Action(() => listBoxFriendsList.DisplayMember = "Name"));
 
-            foreach (User friend in FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends)
+            using (IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.Friends))
             {
-
-                listBoxFriendsList.Invoke(new Action(() => listBoxFriendsList.Items.Add(friend)));
-
+                while (iterator.MoveNext())
+                {
+                    listBoxFriendsList.Invoke(new Action(() => listBoxFriendsList.Items.Add(iterator.Current)));
+                }
             }
+
 
         }
 
@@ -308,7 +310,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if(r_FetchersThread.Join(1))
             {
 
-                featchFriendList();
+                fetchFriendList();
 
             }
 
@@ -317,27 +319,29 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         //Checkins
         private void fetchFavouriteTeams()
         {
-            if(FormMainFacade.Instance.LoggedInUser.LoggedUser.FavofriteTeams!=null)
-            {
-                listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.DisplayMember = "Name"));
-
-                foreach (Page favTeam in FormMainFacade.Instance.LoggedInUser.LoggedUser.FavofriteTeams)
-                {
-
-                    listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add(favTeam)));
-
-                }
-            }
-
-            else
+          
+            listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.DisplayMember = "Name"));
+            if (FormMainFacade.Instance.GetFavouriteTeams() == null)
             {
                 listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add("No Teams")));
             }
 
+            else
+            {
+                using (IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.FavouriteTeams))
+                {
+                    while (iterator.MoveNext())
+                    {
+                        listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(iterator.Current)));
+                    }
+                }
+            }
 
+          
             r_FetchersThread.Join();
 
         }
+
         private void listBoxFavouriteTeams_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxFavouriteTeams.SelectedItems.Count == 1)
@@ -380,7 +384,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if(checkBoxFarFriends.Checked)
             {
                
-                featchNearesrFriend(chosenRadius=0,Enums.eDistanceMethod.farOffFriends);
+                featchNearesrFriend(chosenRadius,Enums.eDistanceMethod.farOffFriends);
             }
             else
                 featchNearesrFriend(chosenRadius,Enums.eDistanceMethod.closestFriends);
@@ -791,6 +795,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         {
             if(r_FetchersThread.Join(1) && r_UserDetailsThread.Join(1))
             {
+                listBoxPosts.DataSource = null;
                 listBoxAlbums.Items.Clear();
                 listBoxFavouriteTeams.Items.Clear();
                 listBoxPosts.Items.Clear();

@@ -13,10 +13,13 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
     public class AppSettings  // Singleton
     {
 
+        
         public Point RecentWindowLocation { get; set; }
         public Size RecentWindowSize { get; set; }
         public bool RememberUser { get; set; }
         public string RecentAccessToken { get; set; }
+
+
 
         private AppSettings()
         {

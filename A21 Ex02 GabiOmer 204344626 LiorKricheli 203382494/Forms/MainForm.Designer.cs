@@ -42,16 +42,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.textBoxNameChange = new System.Windows.Forms.TextBox();
             this.buttonEditAbout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.imageNormalPictureBox = new System.Windows.Forms.PictureBox();
             this.labelCountFriends = new System.Windows.Forms.Label();
             this.labelCountEvents = new System.Windows.Forms.Label();
-            this.labelCountCheckins = new System.Windows.Forms.Label();
             this.labelCountAlbums = new System.Windows.Forms.Label();
             this.labelCountPosts = new System.Windows.Forms.Label();
             this.labelFriendsStatistics = new System.Windows.Forms.Label();
             this.labelEventStatistics = new System.Windows.Forms.Label();
-            this.labelCheckinsStatistics = new System.Windows.Forms.Label();
             this.labelAlbumsStatistics = new System.Windows.Forms.Label();
             this.labelPostStatistics = new System.Windows.Forms.Label();
             this.btLogout = new System.Windows.Forms.Button();
@@ -59,9 +58,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.tabPageProfile = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.labelEditPost = new System.Windows.Forms.Label();
             this.postDescriptionTextBox = new System.Windows.Forms.TextBox();
+            this.postAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBoxPosts = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelPost = new System.Windows.Forms.Label();
@@ -88,6 +87,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.checkBoxFarFriends = new System.Windows.Forms.CheckBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.labelFriend2Name = new System.Windows.Forms.Label();
             this.labelFriend1Name = new System.Windows.Forms.Label();
             this.labelRank = new System.Windows.Forms.Label();
@@ -116,22 +123,13 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelAnalyzer = new System.Windows.Forms.Label();
             this.checkinsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.postAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pictureBoxRefresh = new System.Windows.Forms.PictureBox();
             this.panelDetailsOfUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPageProfile.SuspendLayout();
@@ -143,6 +141,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer7)).BeginInit();
             this.splitContainer7.Panel1.SuspendLayout();
@@ -169,6 +168,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMatch2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMatch1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRadius)).BeginInit();
@@ -178,9 +178,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).BeginInit();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDetailsOfUser
@@ -290,12 +287,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer1.Panel1.Controls.Add(this.imageNormalPictureBox);
             this.splitContainer1.Panel1.Controls.Add(this.labelCountFriends);
             this.splitContainer1.Panel1.Controls.Add(this.labelCountEvents);
-            this.splitContainer1.Panel1.Controls.Add(this.labelCountCheckins);
             this.splitContainer1.Panel1.Controls.Add(this.labelCountAlbums);
             this.splitContainer1.Panel1.Controls.Add(this.labelCountPosts);
             this.splitContainer1.Panel1.Controls.Add(this.labelFriendsStatistics);
             this.splitContainer1.Panel1.Controls.Add(this.labelEventStatistics);
-            this.splitContainer1.Panel1.Controls.Add(this.labelCheckinsStatistics);
             this.splitContainer1.Panel1.Controls.Add(this.labelAlbumsStatistics);
             this.splitContainer1.Panel1.Controls.Add(this.labelPostStatistics);
             this.splitContainer1.Panel1.Controls.Add(this.btLogout);
@@ -308,6 +303,18 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer1.SplitterDistance = 256;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 12;
+            // 
+            // pictureBoxRefresh
+            // 
+            this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRefresh.Image")));
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(206, 12);
+            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
+            this.pictureBoxRefresh.Size = new System.Drawing.Size(42, 37);
+            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxRefresh.TabIndex = 30;
+            this.pictureBoxRefresh.TabStop = false;
+            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
             // 
             // label1
             // 
@@ -324,7 +331,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.imageNormalPictureBox.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userBindingSource1, "ImageNormal", true));
             this.imageNormalPictureBox.Location = new System.Drawing.Point(6, 3);
             this.imageNormalPictureBox.Name = "imageNormalPictureBox";
-            this.imageNormalPictureBox.Size = new System.Drawing.Size(187, 129);
+            this.imageNormalPictureBox.Size = new System.Drawing.Size(153, 129);
             this.imageNormalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imageNormalPictureBox.TabIndex = 28;
             this.imageNormalPictureBox.TabStop = false;
@@ -332,7 +339,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelCountFriends
             // 
             this.labelCountFriends.AutoSize = true;
-            this.labelCountFriends.Location = new System.Drawing.Point(105, 450);
+            this.labelCountFriends.Location = new System.Drawing.Point(106, 433);
             this.labelCountFriends.Name = "labelCountFriends";
             this.labelCountFriends.Size = new System.Drawing.Size(78, 13);
             this.labelCountFriends.TabIndex = 27;
@@ -341,25 +348,16 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelCountEvents
             // 
             this.labelCountEvents.AutoSize = true;
-            this.labelCountEvents.Location = new System.Drawing.Point(105, 420);
+            this.labelCountEvents.Location = new System.Drawing.Point(106, 403);
             this.labelCountEvents.Name = "labelCountEvents";
             this.labelCountEvents.Size = new System.Drawing.Size(77, 13);
             this.labelCountEvents.TabIndex = 26;
             this.labelCountEvents.Text = "[Count Events]";
             // 
-            // labelCountCheckins
-            // 
-            this.labelCountCheckins.AutoSize = true;
-            this.labelCountCheckins.Location = new System.Drawing.Point(105, 390);
-            this.labelCountCheckins.Name = "labelCountCheckins";
-            this.labelCountCheckins.Size = new System.Drawing.Size(88, 13);
-            this.labelCountCheckins.TabIndex = 25;
-            this.labelCountCheckins.Text = "[Count Checkins]";
-            // 
             // labelCountAlbums
             // 
             this.labelCountAlbums.AutoSize = true;
-            this.labelCountAlbums.Location = new System.Drawing.Point(105, 359);
+            this.labelCountAlbums.Location = new System.Drawing.Point(105, 374);
             this.labelCountAlbums.Name = "labelCountAlbums";
             this.labelCountAlbums.Size = new System.Drawing.Size(78, 13);
             this.labelCountAlbums.TabIndex = 24;
@@ -368,7 +366,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelCountPosts
             // 
             this.labelCountPosts.AutoSize = true;
-            this.labelCountPosts.Location = new System.Drawing.Point(105, 331);
+            this.labelCountPosts.Location = new System.Drawing.Point(105, 346);
             this.labelCountPosts.Name = "labelCountPosts";
             this.labelCountPosts.Size = new System.Drawing.Size(70, 13);
             this.labelCountPosts.TabIndex = 23;
@@ -377,7 +375,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelFriendsStatistics
             // 
             this.labelFriendsStatistics.AutoSize = true;
-            this.labelFriendsStatistics.Location = new System.Drawing.Point(8, 455);
+            this.labelFriendsStatistics.Location = new System.Drawing.Point(9, 438);
             this.labelFriendsStatistics.Name = "labelFriendsStatistics";
             this.labelFriendsStatistics.Size = new System.Drawing.Size(44, 13);
             this.labelFriendsStatistics.TabIndex = 22;
@@ -386,25 +384,16 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelEventStatistics
             // 
             this.labelEventStatistics.AutoSize = true;
-            this.labelEventStatistics.Location = new System.Drawing.Point(10, 420);
+            this.labelEventStatistics.Location = new System.Drawing.Point(11, 403);
             this.labelEventStatistics.Name = "labelEventStatistics";
             this.labelEventStatistics.Size = new System.Drawing.Size(43, 13);
             this.labelEventStatistics.TabIndex = 21;
             this.labelEventStatistics.Text = "Events:";
             // 
-            // labelCheckinsStatistics
-            // 
-            this.labelCheckinsStatistics.AutoSize = true;
-            this.labelCheckinsStatistics.Location = new System.Drawing.Point(12, 390);
-            this.labelCheckinsStatistics.Name = "labelCheckinsStatistics";
-            this.labelCheckinsStatistics.Size = new System.Drawing.Size(54, 13);
-            this.labelCheckinsStatistics.TabIndex = 20;
-            this.labelCheckinsStatistics.Text = "Checkins:";
-            // 
             // labelAlbumsStatistics
             // 
             this.labelAlbumsStatistics.AutoSize = true;
-            this.labelAlbumsStatistics.Location = new System.Drawing.Point(12, 359);
+            this.labelAlbumsStatistics.Location = new System.Drawing.Point(12, 374);
             this.labelAlbumsStatistics.Name = "labelAlbumsStatistics";
             this.labelAlbumsStatistics.Size = new System.Drawing.Size(44, 13);
             this.labelAlbumsStatistics.TabIndex = 19;
@@ -413,7 +402,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // labelPostStatistics
             // 
             this.labelPostStatistics.AutoSize = true;
-            this.labelPostStatistics.Location = new System.Drawing.Point(12, 331);
+            this.labelPostStatistics.Location = new System.Drawing.Point(12, 346);
             this.labelPostStatistics.Name = "labelPostStatistics";
             this.labelPostStatistics.Size = new System.Drawing.Size(36, 13);
             this.labelPostStatistics.TabIndex = 18;
@@ -488,7 +477,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // splitContainer4.Panel1
             // 
             this.splitContainer4.Panel1.AutoScroll = true;
-            this.splitContainer4.Panel1.Controls.Add(this.vScrollBar1);
             this.splitContainer4.Panel1.Controls.Add(this.labelEditPost);
             this.splitContainer4.Panel1.Controls.Add(this.postDescriptionTextBox);
             this.splitContainer4.Panel1.Controls.Add(this.listBoxPosts);
@@ -502,13 +490,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer4.SplitterDistance = 232;
             this.splitContainer4.SplitterWidth = 2;
             this.splitContainer4.TabIndex = 0;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(209, 30);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(13, 202);
-            this.vScrollBar1.TabIndex = 5;
             // 
             // labelEditPost
             // 
@@ -530,8 +511,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.postDescriptionTextBox.TabIndex = 3;
             this.postDescriptionTextBox.Validated += new System.EventHandler(this.postDescriptionTextBox_Validated);
             // 
+            // postAdapterBindingSource
+            // 
+            this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
+            // 
             // listBoxPosts
             // 
+            this.listBoxPosts.DataSource = this.postAdapterBindingSource;
+            this.listBoxPosts.DisplayMember = "PostDescription";
             this.listBoxPosts.Dock = System.Windows.Forms.DockStyle.Left;
             this.listBoxPosts.FormattingEnabled = true;
             this.listBoxPosts.Location = new System.Drawing.Point(0, 28);
@@ -872,6 +859,100 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel7.Size = new System.Drawing.Size(318, 226);
             this.panel7.TabIndex = 4;
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.buttonSave);
+            this.panel5.Controls.Add(this.buttonReset);
+            this.panel5.Controls.Add(this.radioButton5);
+            this.panel5.Controls.Add(this.radioButton4);
+            this.panel5.Controls.Add(this.radioButton3);
+            this.panel5.Controls.Add(this.radioButton2);
+            this.panel5.Controls.Add(this.radioButton1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Enabled = false;
+            this.panel5.Location = new System.Drawing.Point(0, 152);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(314, 70);
+            this.panel5.TabIndex = 1;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(90, 35);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(113, 23);
+            this.buttonSave.TabIndex = 18;
+            this.buttonSave.Text = "Save Ranking";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(256, 35);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(47, 23);
+            this.buttonReset.TabIndex = 17;
+            this.buttonReset.Text = "Reset";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(209, 3);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(31, 17);
+            this.radioButton5.TabIndex = 16;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Tag = "5";
+            this.radioButton5.Text = "5";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(172, 3);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(31, 17);
+            this.radioButton4.TabIndex = 15;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Tag = "4";
+            this.radioButton4.Text = "4";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(135, 3);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(31, 17);
+            this.radioButton3.TabIndex = 14;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "3";
+            this.radioButton3.Text = "3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(98, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(31, 17);
+            this.radioButton2.TabIndex = 13;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Tag = "2";
+            this.radioButton2.Text = "2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(61, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(31, 17);
+            this.radioButton1.TabIndex = 12;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "1";
+            this.radioButton1.Text = "1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // labelFriend2Name
             // 
             this.labelFriend2Name.AutoSize = true;
@@ -1148,115 +1229,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.checkinsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Checkin);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.buttonSave);
-            this.panel5.Controls.Add(this.buttonReset);
-            this.panel5.Controls.Add(this.radioButton5);
-            this.panel5.Controls.Add(this.radioButton4);
-            this.panel5.Controls.Add(this.radioButton3);
-            this.panel5.Controls.Add(this.radioButton2);
-            this.panel5.Controls.Add(this.radioButton1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Enabled = false;
-            this.panel5.Location = new System.Drawing.Point(0, 152);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(314, 70);
-            this.panel5.TabIndex = 1;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(90, 35);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(113, 23);
-            this.buttonSave.TabIndex = 18;
-            this.buttonSave.Text = "Save Ranking";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            // 
-            // buttonReset
-            // 
-            this.buttonReset.Location = new System.Drawing.Point(256, 35);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(47, 23);
-            this.buttonReset.TabIndex = 17;
-            this.buttonReset.Text = "Reset";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(209, 3);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(31, 17);
-            this.radioButton5.TabIndex = 16;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Tag = "5";
-            this.radioButton5.Text = "5";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(172, 3);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(31, 17);
-            this.radioButton4.TabIndex = 15;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Tag = "4";
-            this.radioButton4.Text = "4";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(135, 3);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(31, 17);
-            this.radioButton3.TabIndex = 14;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Tag = "3";
-            this.radioButton3.Text = "3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(98, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(31, 17);
-            this.radioButton2.TabIndex = 13;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Tag = "2";
-            this.radioButton2.Text = "2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(61, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(31, 17);
-            this.radioButton1.TabIndex = 12;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Tag = "1";
-            this.radioButton1.Text = "1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // postAdapterBindingSource
-            // 
-            this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
-            // 
-            // pictureBoxRefresh
-            // 
-            this.pictureBoxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRefresh.Image")));
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(205, 52);
-            this.pictureBoxRefresh.Name = "pictureBoxRefresh";
-            this.pictureBoxRefresh.Size = new System.Drawing.Size(43, 40);
-            this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxRefresh.TabIndex = 30;
-            this.pictureBoxRefresh.TabStop = false;
-            this.pictureBoxRefresh.Click += new System.EventHandler(this.pictureBoxRefresh_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1265,6 +1237,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(950, 550);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form Main";
             this.panelDetailsOfUser.ResumeLayout(false);
             this.panelDetailsOfUser.PerformLayout();
@@ -1274,6 +1247,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageNormalPictureBox)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPageProfile.ResumeLayout(false);
@@ -1286,6 +1260,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.splitContainer7.Panel1.ResumeLayout(false);
@@ -1320,6 +1295,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.splitContainer3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMatch2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMatch1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRadius)).EndInit();
@@ -1331,10 +1308,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.postAdapterBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRefresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1408,12 +1381,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Label labelFriendList;
         private System.Windows.Forms.Label labelCountFriends;
         private System.Windows.Forms.Label labelCountEvents;
-        private System.Windows.Forms.Label labelCountCheckins;
         private System.Windows.Forms.Label labelCountAlbums;
         private System.Windows.Forms.Label labelCountPosts;
         private System.Windows.Forms.Label labelFriendsStatistics;
         private System.Windows.Forms.Label labelEventStatistics;
-        private System.Windows.Forms.Label labelCheckinsStatistics;
         private System.Windows.Forms.Label labelAlbumsStatistics;
         private System.Windows.Forms.Label labelPostStatistics;
         private System.Windows.Forms.BindingSource checkinsBindingSource;
@@ -1426,7 +1397,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.PictureBox pictureBoxFavTeams;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxFarFriends;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonReset;
