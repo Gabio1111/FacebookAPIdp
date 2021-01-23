@@ -55,7 +55,7 @@
     <Compile Include="AppSettings.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="FactoryMethod\FeatureFactory.cs" />
-    <Compile Include="Facade\FormMainFacade.cs" />
+    <Compile Include="Facade\Iterator\FormMainFacade.cs" />
     <Compile Include="Facade\FeaturesFacade.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>

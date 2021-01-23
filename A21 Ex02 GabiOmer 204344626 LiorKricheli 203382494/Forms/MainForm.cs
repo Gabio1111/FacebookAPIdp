@@ -332,7 +332,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 {
                     while (iterator.MoveNext())
                     {
-                        listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(iterator.Current)));
+                        listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add(iterator.Current)));
                     }
                 }
             }

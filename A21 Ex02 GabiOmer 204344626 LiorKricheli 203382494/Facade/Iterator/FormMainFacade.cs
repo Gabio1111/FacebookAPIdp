@@ -39,7 +39,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private FormMainFacade()
         {
             postAdapter = new PostAdapter();
-           // posts = new List<PostAdapter>();
+       
             postAdapter.AttachListener(this as IPostAdapterLIstener);
             
         }
@@ -190,61 +190,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
         }
-        //public IEnumerator<Album> GetEnumerator() => new EnumerableUserData(this);
 
-        //private class EnumerableUserData : IEnumerator<Album>
-        //{
-        //    FormMainFacade m_mainFacade;
-        //    int m_CurrentPostInx = -1;
-        //    FacebookObjectCollection<Album> albums1;
-
-        //    public EnumerableUserData(FormMainFacade i_mainFacade)
-        //    {
-        //        albums1 = new FacebookObjectCollection<Album>();
-        //        m_mainFacade = i_mainFacade;
-
-        //        foreach (Album album in m_mainFacade.GetAlbums())
-        //        {
-        //            albums1.Add(album);
-        //        }
-
-
-        //    }
-
-        //    public void Dispose()
-        //    {
-        //        Reset();
-
-        //    }
-
-        //    public Album Current
-        //    {
-        //        get { return albums1[m_CurrentPostInx]; }
-        //    }
-
-        //    object IEnumerator.Current
-        //    {
-        //        get { return this.Current; }
-        //    }
-
-        //    public bool MoveNext()
-        //    {
-        //        if (m_CurrentPostInx + 1 < albums1.Count)
-        //        {
-        //            m_CurrentPostInx++;
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    public void Reset()
-        //    {
-        //        m_CurrentPostInx = -1;
-        //    }
-
-        //}
 
 
         public string CountPosts
@@ -257,7 +203,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 try
                 {
-                    countPosts = string.Format("{0}", PostAdapter.postCount);
+                    countPosts = string.Format("{0}", LoggedInUser.LoggedUser.Posts.Count);
                 }
                 catch (Exception)
                 {
@@ -317,27 +263,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
         
-        //public string CountCheckins
-        //{
-
-        //    get
-        //    {
-
-        //        string countCheckins;
-
-        //        try
-        //        {
-        //            countCheckins = string.Format("{0}", LoggedInUser.LoggedUser.Checkins.Count);
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //            throw new Facebook.FacebookApiException("");
-        //        }
-
-        //        return countCheckins;
-        //    }
-        //}
         
         public string CountEvents
         {
@@ -398,7 +323,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             return posts;
 
         }
-        public void update()
+        public void update() //as part of observer DP
         {
             MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
         }
