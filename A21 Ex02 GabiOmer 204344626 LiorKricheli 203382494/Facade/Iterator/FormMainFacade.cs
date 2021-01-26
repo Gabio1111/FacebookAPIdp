@@ -325,6 +325,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         }
         public void update() //as part of observer DP
         {
+            
             MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
         }
 

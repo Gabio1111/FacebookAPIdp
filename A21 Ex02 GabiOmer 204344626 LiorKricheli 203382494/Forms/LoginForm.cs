@@ -30,7 +30,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             InitializeComponent();
 
-            FacebookService.s_CollectionLimit = 200;
+            FacebookService.s_CollectionLimit = 500;
 
             m_LoggedInUser = FormMainFacade.Instance.LoginToMainForm();
 

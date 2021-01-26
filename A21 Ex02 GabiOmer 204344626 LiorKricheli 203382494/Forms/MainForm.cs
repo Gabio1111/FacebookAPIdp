@@ -75,13 +75,13 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             new Thread(fetchFriendList).Start();
 
-            new Thread(featchStaticticOfUser).Start();
+            new Thread(featchStatisticsOfUser).Start();
 
             new Thread(fetchFavouriteTeams).Start();
 
         }
 
-        private void featchStaticticOfUser()
+        private void featchStatisticsOfUser()
         {
 
             labelCountPosts.Invoke(new Action(() => labelCountPosts.Text = string.Format("{0}", FormMainFacade.Instance.CountPosts)));
@@ -800,9 +800,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 listBoxFavouriteTeams.Items.Clear();
                 listBoxPosts.Items.Clear();
                 listBoxFriendsList.Items.Clear();
+                FormMainFacade.Instance.LoginToMainForm();
                 new Thread(fetchLoggedInUser).Start(); 
             }    
-            //fetchLoggedInUser();  
+              
         }
     }
 
