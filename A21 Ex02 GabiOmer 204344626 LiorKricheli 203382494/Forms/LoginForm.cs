@@ -13,17 +13,15 @@ using FacebookWrapper.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
     public partial class LoginForm : Form
     {
 
-        private UserProxy m_LoggedInUser;
-
+        private UserProxy   m_LoggedInUser;
         private LoginResult m_LoginResult;
-
-        private MainForm m_ReloadFormMain;
+        private MainForm    m_ReloadFormMain;
         
         public LoginForm()
         {
@@ -31,7 +29,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             InitializeComponent();
 
             FacebookService.s_CollectionLimit = 200;
-
             m_LoggedInUser = FormMainFacade.Instance.LoginToMainForm();
 
         }
@@ -40,11 +37,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         {
 
             this.Hide();
-
             m_ReloadFormMain = new MainForm();
-
             m_ReloadFormMain.ShowDialog();
-
             this.Visible = false;
 
         }
@@ -60,11 +54,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             {
 
                 m_LoginResult = FacebookService.Connect(AppSettings.Instance.RecentAccessToken);
-
                 this.Hide();
-
                 m_ReloadFormMain = new MainForm();
-
                 m_ReloadFormMain.ShowDialog();
 
             }

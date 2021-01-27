@@ -1,0 +1,12 @@
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\FacebookAPI_DesignPattern.csprojAssemblyReference.cache
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\FacebookAPI_DesignPattern.csproj.GenerateResource.cache
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\FacebookAPI_DesignPattern.csproj.CoreCompileInputs.cache
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\FacebookAPI_DesignPattern.csproj.CopyComplete
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\bin\Debug\A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494.exe.config
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\bin\Debug\A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494.exe
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\bin\Debug\A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494.pdb
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494.MainForm.resources
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494.LoginForm.resources
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494.Properties.Resources.resources
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494.exe
+C:\Users\liork\OneDrive\שולחן העבודה\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494\obj\Debug\A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494.pdb

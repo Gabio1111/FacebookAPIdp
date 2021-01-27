@@ -14,37 +14,25 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Collections;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
-
-    public class FormMainFacade:IPostAdapterLIstener
+    public class FormMainFacade: IPostAdapterListener
     {
 
-        public UserProxy LoggedInUser { get; set; }
-
-        public LoginResult LoginResult { get; set; }
-
-
+        public UserProxy    LoggedInUser { get; set; }
+        public LoginResult  LoginResult { get; set; }
+        private PostAdapter m_PostAdapter;
         private static FormMainFacade s_FormMainFacade;
-
-        private PostAdapter postAdapter;
-
-        
-
-       
-
-
 
         private FormMainFacade()
         {
-            postAdapter = new PostAdapter();
-           // posts = new List<PostAdapter>();
-            postAdapter.AttachListener(this as IPostAdapterLIstener);
+
+            m_PostAdapter = new PostAdapter();
+            m_PostAdapter.AttachListener(this as IPostAdapterListener);
             
         }
-                   
-
+    
         public UserProxy LoginToMainForm()
         {
 
@@ -103,149 +91,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
         }
-        public IEnumerator<FacebookObject> GetEnumerator(Enums.eFacebookObject objectToIterateOn) => new EnumerableUserData(this,objectToIterateOn);
-
-        private class EnumerableUserData : IEnumerator<FacebookObject>
-        {
-            FormMainFacade m_mainFacade;
-            Enums.eFacebookObject eFacebookObject;
-            int m_CurrentPostInx = -1;
-            FacebookObjectCollection<FacebookObject> m_FBobjects;
-
-
-            public EnumerableUserData(FormMainFacade i_mainFacade,Enums.eFacebookObject i_facebookObject)
-            {
-                m_FBobjects = new FacebookObjectCollection<FacebookObject>();
-                m_mainFacade = i_mainFacade;
-                eFacebookObject = i_facebookObject;
-                
-                try
-                {
-
-                    switch (eFacebookObject)
-                    {
-                        case Enums.eFacebookObject.Albums:
-                            
-                            foreach (Album album in m_mainFacade.GetAlbums())
-                            {
-                                m_FBobjects.Add(album);
-                            }
-                            break;
-
-                        case Enums.eFacebookObject.Friends:
-                            foreach (User friend in m_mainFacade.GetFriends())
-                            {
-                                m_FBobjects.Add(friend);
-                            }
-                            break;
-
-                        case Enums.eFacebookObject.FavouriteTeams:
-                            foreach (Page FavTeam in m_mainFacade.GetFavouriteTeams())
-                            {
-                                m_FBobjects.Add(FavTeam);
-                            }
-                            break;
-
-                    }
-                }
-
-                catch
-                {
-                    throw new Facebook.FacebookApiException("No Access Or null");
-                }
-
-            }
-
-            public void Dispose()
-            {
-                Reset();
-
-            }
-
-            public FacebookObject Current
-            {
-                get { return m_FBobjects[m_CurrentPostInx]; }
-            }
-
-            object IEnumerator.Current
-            {
-                get { return this.Current; }
-            }
-
-            public bool MoveNext()
-            {
-                if (m_CurrentPostInx + 1 < m_FBobjects.Count)
-                {
-                    m_CurrentPostInx++;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            public void Reset()
-            {
-                m_CurrentPostInx = -1;
-            }
-
-        }
-        //public IEnumerator<Album> GetEnumerator() => new EnumerableUserData(this);
-
-        //private class EnumerableUserData : IEnumerator<Album>
-        //{
-        //    FormMainFacade m_mainFacade;
-        //    int m_CurrentPostInx = -1;
-        //    FacebookObjectCollection<Album> albums1;
-
-        //    public EnumerableUserData(FormMainFacade i_mainFacade)
-        //    {
-        //        albums1 = new FacebookObjectCollection<Album>();
-        //        m_mainFacade = i_mainFacade;
-
-        //        foreach (Album album in m_mainFacade.GetAlbums())
-        //        {
-        //            albums1.Add(album);
-        //        }
-
-
-        //    }
-
-        //    public void Dispose()
-        //    {
-        //        Reset();
-
-        //    }
-
-        //    public Album Current
-        //    {
-        //        get { return albums1[m_CurrentPostInx]; }
-        //    }
-
-        //    object IEnumerator.Current
-        //    {
-        //        get { return this.Current; }
-        //    }
-
-        //    public bool MoveNext()
-        //    {
-        //        if (m_CurrentPostInx + 1 < albums1.Count)
-        //        {
-        //            m_CurrentPostInx++;
-        //            return true;
-        //        }
-        //        else
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    public void Reset()
-        //    {
-        //        m_CurrentPostInx = -1;
-        //    }
-
-        //}
-
 
         public string CountPosts
         {
@@ -257,15 +102,19 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 try
                 {
-                    countPosts = string.Format("{0}", PostAdapter.postCount);
+
+                    countPosts = string.Format("{0}", PostAdapter.PostCount);
+
                 }
                 catch (Exception)
                 {
 
                     throw new Facebook.FacebookApiException("");
+
                 }
                 
                 return countPosts;
+
             }
 
         }
@@ -280,15 +129,19 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 try
                 {
+
                     countAlbums = string.Format("{0}", LoggedInUser.LoggedUser.Albums.Count);
+
                 }
                 catch (Exception)
                 {
 
                     throw new Facebook.FacebookApiException("");
+
                 }
 
                 return countAlbums;
+
             }
 
         }
@@ -303,12 +156,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 try
                 {
+
                     countFriends = string.Format("{0}", LoggedInUser.LoggedUser.Friends.Count);
+
                 }
                 catch (Exception)
                 {
 
                     throw new Facebook.FacebookApiException("");
+
                 }
 
                 return countFriends;
@@ -316,28 +172,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
         }
-        
-        //public string CountCheckins
-        //{
-
-        //    get
-        //    {
-
-        //        string countCheckins;
-
-        //        try
-        //        {
-        //            countCheckins = string.Format("{0}", LoggedInUser.LoggedUser.Checkins.Count);
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //            throw new Facebook.FacebookApiException("");
-        //        }
-
-        //        return countCheckins;
-        //    }
-        //}
         
         public string CountEvents
         {
@@ -349,37 +183,49 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 try
                 {
+
                     countEvents = string.Format("{0}", LoggedInUser.LoggedUser.Events.Count);
+
                 }
                 catch (Exception)
                 {
 
                     throw new Facebook.FacebookApiException("");
+
                 }
 
                 return countEvents;
+
             }
 
         }
 
-  
-
-        public FacebookObjectCollection<Page> GetFavouriteTeams()
+        public FacebookObjectCollection<Page> GetPages()
         {
 
-            FacebookObjectCollection<Page> Teams = new FacebookObjectCollection<Page>();
+            FacebookObjectCollection<Page> pages = null;
 
-            if (LoggedInUser.LoggedUser.FavofriteTeams!=null)
+            if (LoggedInUser.LoggedUser.FavofriteTeams != null)
             {
-                foreach(Page favTeam in LoggedInUser.LoggedUser.FavofriteTeams)
+
+                pages = new FacebookObjectCollection<Page>();
+
+                foreach (Page favofriteTeams in LoggedInUser.LoggedUser.FavofriteTeams)
                 {
-                    Teams.Add(favTeam);
+
+                    pages.Add(favofriteTeams);
+
                 }
+
             }      
-            return Teams;
+
+            return pages;
+
         }
+
         public List<PostAdapter> GetPosts()
         {
+
             List<PostAdapter> posts;
 
             try
@@ -398,21 +244,20 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             return posts;
 
         }
-        public void update()
-        {
-            MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
-        }
 
         public FacebookObjectCollection<Album> GetAlbums()
         {
-            FacebookObjectCollection<Album> albums = new FacebookObjectCollection<Album>();
+
+            FacebookObjectCollection<Album> albums = null;
+            
             try
             {
-                if(this.LoggedInUser.LoggedUser.Albums!=null)
-                {
-                    albums = this.LoggedInUser.LoggedUser.Albums;
 
-                    
+                if(this.LoggedInUser.LoggedUser.Albums != null)
+                {
+
+                    albums = this.LoggedInUser.LoggedUser.Albums;
+                                        
                 }
 
             }
@@ -429,11 +274,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         public FacebookObjectCollection<User> GetFriends()
         {
-            FacebookObjectCollection<User> friends = new FacebookObjectCollection<User>();
+
+            FacebookObjectCollection<User> friends = null;
+
             try
             {
+
                 if (this.LoggedInUser.LoggedUser.Friends != null)
                 {
+
                     friends = this.LoggedInUser.LoggedUser.Friends;
 
                 }
@@ -447,41 +296,138 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
             return friends;
-        }
-
-
-        public FacebookObjectCollection<Checkin> GetCheckins()
-        {
-
-            FacebookObjectCollection<Checkin> checkin;
-
-            try
-            {
-
-                checkin = LoggedInUser.LoggedUser.Checkins;
-
-            }
-            catch (Exception)
-            {
-
-                throw new Facebook.FacebookApiException("Couldn't fetch user's checkins.");
-
-            }
-
-            return checkin;
 
         }
-
+        
         public void LoggedOutFinished()
         {
             
-            AppSettings.Instance.RememberUser = false;     
-            
+            AppSettings.Instance.RememberUser = false;               
             AppSettings.Instance.SaveToFile();
 
             MessageBox.Show("You are now logged out!");
 
             Environment.Exit(Environment.ExitCode);
+
+        }
+
+        public void Update()
+        {
+
+            MessageBox.Show(string.Format("you have {0} new posts", PostAdapter.CountNewPosts));
+
+        }
+
+        public IEnumerator<FacebookObject> GetEnumerator(Enums.eFacebookObject i_ObjectToIterator) => new EnumerableUserData(this, i_ObjectToIterator);
+
+        private class EnumerableUserData : IEnumerator<FacebookObject>
+        {
+
+            private FacebookObjectCollection<FacebookObject> m_FacebookObjects;
+            private FormMainFacade m_MainFacade;
+            private int m_CurrentObjectIndex = -1;
+           
+            public EnumerableUserData(FormMainFacade i_MainFacade, Enums.eFacebookObject i_FacebookObject)
+            {
+
+                m_FacebookObjects = new FacebookObjectCollection<FacebookObject>();
+                m_MainFacade = i_MainFacade;
+                Enums.eFacebookObject eFacebookObject = i_FacebookObject;
+
+                try
+                {
+
+                    switch (eFacebookObject)
+                    {
+
+                        case Enums.eFacebookObject.Albums:
+
+                            foreach (Album album in m_MainFacade.GetAlbums())
+                            {
+
+                                m_FacebookObjects.Add(album);
+
+                            }
+
+                            break;
+
+                        case Enums.eFacebookObject.Friends:
+
+                            foreach (User friend in m_MainFacade.GetFriends())
+                            {
+
+                                m_FacebookObjects.Add(friend);
+
+                            }
+
+                            break;
+
+                        case Enums.eFacebookObject.FavouriteTeams:
+
+                            foreach (Page pages in m_MainFacade.GetPages())
+                            {
+
+                                m_FacebookObjects.Add(pages);
+
+                            }
+
+                            break;
+
+                    }
+
+                }
+                catch
+                {
+
+                    throw new Facebook.FacebookApiException("No Access Or null");
+
+                }
+
+            }
+
+            public void Dispose()
+            {
+
+                Reset();
+
+            }
+
+            public FacebookObject Current
+            {
+
+                get { return m_FacebookObjects[m_CurrentObjectIndex]; }
+
+            }
+
+            object IEnumerator.Current
+            {
+
+                get { return this.Current; }
+
+            }
+
+            public bool MoveNext()
+            {
+
+                bool haveNewObject = false;
+                if (m_CurrentObjectIndex + 1 < m_FacebookObjects.Count)
+                {
+
+                    m_CurrentObjectIndex++;
+                    haveNewObject = !haveNewObject;
+
+                }
+
+                return haveNewObject;
+
+            }
+
+            public void Reset()
+            {
+
+                m_CurrentObjectIndex = -1;
+
+            }
 
         }
 

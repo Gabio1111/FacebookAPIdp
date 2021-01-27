@@ -1,5 +1,5 @@
 ﻿
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
     partial class LoginForm
     {

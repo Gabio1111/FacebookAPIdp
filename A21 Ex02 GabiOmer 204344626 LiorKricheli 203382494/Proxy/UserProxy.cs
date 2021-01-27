@@ -12,7 +12,7 @@ using Facebook;
 using FacebookWrapper.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.Threading;
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
     public class UserProxy

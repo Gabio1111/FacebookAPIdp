@@ -2,24 +2,24 @@
 using System;
 using System.Collections.Generic;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
-    public interface IPostAdapterLIstener
+    public interface IPostAdapterListener
     {
 
-        void update();
+        void Update();
+
     }
 
     public class PostAdapter
     {
 
-        private readonly Post r_Post;
-
-        private string m_PostDescription;
-        public static int postCount  { get; private set; } = 0;
-        public static int CountNewPosts { get;  private set; }
-        private static readonly List<IPostAdapterLIstener> lIsteners=new List<IPostAdapterLIstener>();
+        private readonly Post   r_Post;
+        private string          m_PostDescription;
+        public static int       PostCount  { get; private set; } = 0;
+        public static int       CountNewPosts { get;  private set; }
+        private static readonly List<IPostAdapterListener>  m_Ilsteners = new List<IPostAdapterListener>();
 
 
         public PostAdapter(Post i_Post=null) 
@@ -29,14 +29,18 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        public void AttachListener(IPostAdapterLIstener i_listener)
+        public void AttachListener(IPostAdapterListener i_AttachListener)
         {
-            lIsteners.Add(i_listener);
+
+            m_Ilsteners.Add(i_AttachListener);
+
         }
 
-        public void DetachListener(IPostAdapterLIstener i_listener)
+        public void DetachListener(IPostAdapterListener i_DetachListener)
         {
-            lIsteners.Remove(i_listener);
+
+            m_Ilsteners.Remove(i_DetachListener);
+
         }
 
         public string PostDescription
@@ -50,6 +54,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         public static List<PostAdapter> CreateAdapterPosts(FacebookObjectCollection<Post> i_Posts)
         {
+
             CountNewPosts = 0;
             List<PostAdapter> wrappedPosts = new List<PostAdapter>();
 
@@ -59,30 +64,37 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 wrappedPosts.Add(new PostAdapter(post));
 
             }
-            if(wrappedPosts.Count > postCount)
+
+            if(wrappedPosts.Count > PostCount)
             {
-                CountNewPosts = wrappedPosts.Count - postCount;
-                postCount = wrappedPosts.Count;
-         
+
+                CountNewPosts = wrappedPosts.Count - PostCount;
+                PostCount = wrappedPosts.Count;
                 notifyListenersAboutNewPosts();
+
             }
             
             return wrappedPosts;
 
         }
 
-
         private static void notifyListenersAboutNewPosts()
         {
-            if(CountNewPosts!=0)
+
+            if(CountNewPosts != 0)
             {
-                foreach (IPostAdapterLIstener observer in lIsteners)
+
+                foreach (IPostAdapterListener observer in m_Ilsteners)
                 {
-                    observer.update();
+
+                    observer.Update();
+
                 }
+
             }
          
         }
+
     }
 
 }

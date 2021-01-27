@@ -7,19 +7,17 @@ using System.Drawing;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
     public class AppSettings  // Singleton
     {
-
-        
-        public Point RecentWindowLocation { get; set; }
-        public Size RecentWindowSize { get; set; }
-        public bool RememberUser { get; set; }
-        public string RecentAccessToken { get; set; }
-
-
+                
+        public Point    RecentWindowLocation { get; set; }
+        public Size     RecentWindowSize { get; set; }
+        public bool     RememberUser { get; set; }
+        public string   RecentAccessToken { get; set; }
+        private static AppSettings s_AppSettings;
 
         private AppSettings()
         {
@@ -30,8 +28,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             RecentAccessToken = "";
 
         }
-
-        private static AppSettings s_AppSettings;
 
         public static AppSettings Instance
         {
@@ -53,6 +49,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             set { }
 
         }
+
         public void SaveToFile()
         {
 

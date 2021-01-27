@@ -6,23 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
     internal class MatchMyFriends
     {
 
-        private User m_User;
-
-        private Random m_RandomIndex;
-
+        private User       m_User;
+        private Random     m_RandomIndex;
         private List<User> m_ListMale;
-
         private List<User> m_ListFemale;
      
-        internal MatchMyFriends(User i_loggedUser)
+        internal MatchMyFriends(User i_LoggedUser)
         {
 
-            m_User = i_loggedUser;
+            m_User = i_LoggedUser;
             m_RandomIndex = new Random();
             
         }

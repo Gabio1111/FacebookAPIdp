@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
     public class Enums
     {
+
         public enum eDistanceMethod
         {
+
             farOffFriends,
             closestFriends
+
         }
 
         public enum eFacebookObject
@@ -22,5 +25,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             FavouriteTeams
 
         }
+
     }
+
 }

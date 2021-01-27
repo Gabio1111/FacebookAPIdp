@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
     internal class FriendAnalyzer
@@ -13,28 +13,28 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         internal FriendAnalyzer() { }
 
-        internal double Analyze(User i_user)
+        internal double Analyze(User i_User)
         {
 
             int sumAvarage = 0;
 
             List<int> analyzeList = new List<int>();
 
-            if (i_user != null)
+            if (i_User != null)
             {
 
                 try
                 {
 
-                    analyzeList.Add(i_user.Posts.Count);
+                    analyzeList.Add(i_User.Posts.Count);
 
-                    analyzeList.Add(i_user.Events.Count);
+                    analyzeList.Add(i_User.Events.Count);
 
-                    analyzeList.Add(i_user.Albums.Count);
+                    analyzeList.Add(i_User.Albums.Count);
 
-                    analyzeList.Add(i_user.Checkins.Count);
+                    analyzeList.Add(i_User.Checkins.Count);
 
-                    analyzeList.Add(i_user.Friends.Count);
+                    analyzeList.Add(i_User.Friends.Count);
 
                 }
                 catch

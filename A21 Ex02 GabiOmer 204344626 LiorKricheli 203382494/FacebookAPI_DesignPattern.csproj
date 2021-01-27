@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{FBFA3EF8-51DA-4629-BCCA-26612F9F5BC6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494</RootNamespace>
-    <AssemblyName>A21 Ex02 GabiOmer 204344626 LiorKricheli 203382494</AssemblyName>
+    <RootNamespace>A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494</RootNamespace>
+    <AssemblyName>A21 Ex03 GabiOmer 204344626 LiorKricheli 203382494</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -90,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User+eGender.datasource" />
     <None Include="Properties\DataSources\FacebookWrapper.ObjectModel.User+eOnlineStatus.datasource" />

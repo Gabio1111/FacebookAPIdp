@@ -14,11 +14,16 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Text.RegularExpressions;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
 
     public partial class MainForm : Form
     {
+
+        private readonly Thread r_UserDetailsThread;
+        private readonly Thread r_FetchersThread;
+        private double m_Analyzer = 0;
+        private Random m_RandomForIndexChoseFriend = new Random();
 
         public MainForm()
         {
@@ -26,28 +31,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             InitializeComponent();
 
             r_UserDetailsThread = new Thread(setBindingSourceDataSource);
-
-            r_FetchersThread = new Thread(fetchLoggedInUser);   
-            
+            r_FetchersThread = new Thread(fetchLoggedInUser);            
             r_UserDetailsThread.Priority = ThreadPriority.BelowNormal;
-
             r_FetchersThread.Priority = ThreadPriority.AboveNormal;
-
             r_UserDetailsThread.Start();
-
-            r_FetchersThread.Start();
-           
+            r_FetchersThread.Start();      
             
         }
 
-        readonly Thread r_UserDetailsThread;
-
-        private readonly Thread r_FetchersThread;
-
-        private double m_Analyzer = 0;
-
-        private Random m_RandomForIndexChoseFriend = new Random();
-        
         private void setBindingSourceDataSource()
         {
 
@@ -70,30 +61,21 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         {
 
             new Thread(fetchPosts).Start();
-
             new Thread(fetchAlbums).Start();
-
             new Thread(fetchFriendList).Start();
-
+            new Thread(fetchPages).Start();
             new Thread(featchStaticticOfUser).Start();
-
-            new Thread(fetchFavouriteTeams).Start();
-
+            
         }
 
         private void featchStaticticOfUser()
         {
 
-            labelCountPosts.Invoke(new Action(() => labelCountPosts.Text = string.Format("{0}", FormMainFacade.Instance.CountPosts)));
-            
+            labelCountPosts.Invoke(new Action(() => labelCountPosts.Text = string.Format("{0}", FormMainFacade.Instance.CountPosts)));         
             labelCountEvents.Invoke(new Action(() => labelCountEvents.Text = string.Format("{0}", FormMainFacade.Instance.CountEvents)));
-
             labelCountFriends.Invoke(new Action(() => labelCountFriends.Text = string.Format("{0}",FormMainFacade.Instance.CountFriends)));
-
             labelCountAlbums.Invoke(new Action(() => labelCountAlbums.Text = string.Format("{0}", FormMainFacade.Instance.CountAlbums)));
 
-            //labelCountCheckins.Invoke(new Action(() => labelCountCheckins.Text = string.Format("{0}", FormMainFacade.Instance.CountCheckins)));
-            
         }
        
         protected override void OnShown(EventArgs e)
@@ -102,15 +84,10 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             base.OnShown(e);
 
             tabControl1.Enabled = true;
-
             imageNormalPictureBox.Visible = true;
-
-            textBoxBdayChange.Visible = false;
-
-            textBoxEmailChange.Visible = false;
-
+            textBoxEmailChanges.Visible = false;
+            textBoxBirthdayChanges.Visible = false;
             textBoxNameChange.Visible = false;
-
             buttonSaveChanges.Visible = false;
 
             if (numericUpDownRadius.Value == 0)
@@ -134,8 +111,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             base.OnFormClosing(e);
 
            AppSettings.Instance.RecentWindowSize = this.Size;
-
-            AppSettings.Instance.RecentWindowLocation = this.Location;
+           AppSettings.Instance.RecentWindowLocation = this.Location;
 
             if (AppSettings.Instance.RememberUser)
             {
@@ -151,49 +127,25 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
             AppSettings.Instance.SaveToFile();
-
             Environment.Exit(Environment.ExitCode);
 
         }
-
-
 
         //Posts
         private void fetchPosts()
         {
             
-            //if (InvokeRequired)
-            //{
-            if(listBoxPosts.DataSource==null)
+            if(listBoxPosts.DataSource == null)
             {
+
                 listBoxPosts.Invoke(new Action(() => listBoxPosts.DataSource = postAdapterBindingSource));
+           
             }
 
-            listBoxPosts.Invoke(new Action(() => listBoxPosts.DisplayMember = "PostDescription"));
             this.Invoke(new Action(() => postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts()));
-
-            //}
-            //else
-            //{
-            //    listBoxPosts.DataSource = postAdapterBindingSource;
-            //    postAdapterBindingSource.DataSource = FormMainFacade.Instance.GetPosts();
-
-            //}
-
+            
             r_FetchersThread.Join();
-            //int Count = 0;
-            //foreach(PostAdapter post in FormMainFacade.Instance.GetPosts())
-            //{
-            //    if(post.PostDescription!=null)
-            //    {
-            //        listBoxPosts.Invoke(new Action(() => listBoxPosts.Items.Add(post.PostDescription)));
-            //        //Count++;
-            //        //if (Count == 10 )
-            //        //    break;
-            //    }
-
-            //}
-
+        
         }
 
         //Albums
@@ -204,19 +156,24 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             using(IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.Albums))
             {
+
                 while(iterator.MoveNext())
                 {
+
                     listBoxAlbums.Invoke(new Action(()=>listBoxAlbums.Items.Add(iterator.Current)));
+
                 }
+
             }
 
             r_FetchersThread.Join();
+
         }
 
         private void displaySelectedAlbum()
         {
           
-            if (listBoxAlbums.SelectedItems.Count == 1) 
+            if (listBoxAlbums.SelectedItems.Count == 1) //chose a line in the list box
             {
 
                 Album chosenAlbum = listBoxAlbums.SelectedItem as Album;
@@ -258,12 +215,15 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             using (IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.Friends))
             {
+
                 while (iterator.MoveNext())
                 {
-                    listBoxFriendsList.Invoke(new Action(() => listBoxFriendsList.Items.Add(iterator.Current)));
-                }
-            }
 
+                    listBoxFriendsList.Invoke(new Action(() => listBoxFriendsList.Items.Add(iterator.Current)));
+                
+                }
+
+            }
 
         }
 
@@ -272,6 +232,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
           
             if (listBoxFriendsList.SelectedItems.Count == 1) //chose a line in the list box
             {
+
                 User chosenFriend = listBoxFriendsList.SelectedItem as User;
 
                 if (chosenFriend != null)
@@ -316,38 +277,46 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        //Checkins
-        private void fetchFavouriteTeams()
+        //Pages
+        private void fetchPages()
         {
           
-            listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.DisplayMember = "Name"));
-            if (FormMainFacade.Instance.GetFavouriteTeams() == null)
+            listBoxPages.Invoke(new Action(() => listBoxPages.DisplayMember = "Name"));
+            
+            if (FormMainFacade.Instance.GetPages() == null)
             {
-                listBoxFavouriteTeams.Invoke(new Action(() => listBoxFavouriteTeams.Items.Add("No Teams")));
-            }
 
+                listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add("No Teams")));
+            
+            }
             else
             {
+
                 using (IEnumerator<FacebookObject> iterator = FormMainFacade.Instance.GetEnumerator(Enums.eFacebookObject.FavouriteTeams))
                 {
+
                     while (iterator.MoveNext())
                     {
-                        listBoxAlbums.Invoke(new Action(() => listBoxAlbums.Items.Add(iterator.Current)));
+
+                        listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add(iterator.Current)));
+                    
                     }
+
                 }
+
             }
 
-          
             r_FetchersThread.Join();
 
         }
 
-        private void listBoxFavouriteTeams_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxPages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxFavouriteTeams.SelectedItems.Count == 1)
+
+            if (listBoxPages.SelectedItems.Count == 1)//chose a line in the list box
             {
 
-                Page chosenTeam = listBoxFavouriteTeams.SelectedItem as Page;
+                Page chosenTeam = listBoxPages.SelectedItem as Page;
 
                 if (chosenTeam.PictureNormalURL != null)
                 {
@@ -363,6 +332,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 }
 
             }
+
         }
 
         //Logout
@@ -373,96 +343,11 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
-        ////Featchers
-        private void bNearestFriends_Click(object sender, EventArgs e)
-        {
-
-            lbClosestFriends.Items.Clear();
-
-            int chosenRadius = Convert.ToInt32(numericUpDownRadius.Value);
-
-            if(checkBoxFarFriends.Checked)
-            {
-               
-                featchNearesrFriend(chosenRadius,Enums.eDistanceMethod.farOffFriends);
-            }
-            else
-                featchNearesrFriend(chosenRadius,Enums.eDistanceMethod.closestFriends);
-
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-            if(numericUpDownRadius.Value!=0)
-            {
-
-                buttonNearestFriends.Enabled = true;
-
-            }
-            else
-            {
-
-                buttonNearestFriends.Enabled = false;
-
-            }
-           
-        }
-
-        private void featchNearesrFriend(int i_radius,Enums.eDistanceMethod eDistance)
-        {
-
-            List<FriendByCoordinate> listOfNearesrFriend = FeatureFactory.Instance.Create(FormMainFacade.Instance.LoggedInUser.LoggedUser).InitiateCloseFriends(i_radius,eDistance);
-
-            if (listOfNearesrFriend.Count == 0)
-            {
-
-                lbClosestFriends.Items.Add("No Friends :(");
-
-            }
-            else if (listOfNearesrFriend.Count > 0)
-            {
-
-                foreach (FriendByCoordinate item in listOfNearesrFriend)
-                {
-
-                    lbClosestFriends.Items.Add(item.m_Name);
-
-                }
-
-            }
-
-        }
-
-        private void buttonClearFA_Click(object sender, EventArgs e)
-        {
-
-            pictureBoxFriendFA.Image = null;
-
-            pictureBoxUserFA.Image = null;
-
-            labelFriendNameFA.Text = string.Empty;
-
-            labelUserNameFA.Text = string.Empty;
-
-            labelMSum.Text = string.Empty;
-
-            labelFsum.Text = string.Empty;
-
-        }
-        
-        private void buttonFA_Click(object sender, EventArgs e)
-        {
-
-            fetchFriendAnalyzer();
-
-        }
-
+        ////Create Featchers
         private void tabControl1_Enter(object sender, EventArgs e)
         {
 
-            if(m_Analyzer == 0)
+            if (m_Analyzer == 0)
             {
 
                 new Thread(() =>
@@ -478,14 +363,105 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                 }).Start();
 
             }
-       
+
+        }
+
+        #region Features Nearest Friends
+
+        //Features Nearest Friends
+        private void bNearestFriends_Click(object sender, EventArgs e)
+        {
+
+            lbClosestFriends.Items.Clear();
+
+            int chosenRadius = Convert.ToInt32(numericUpDownRadius.Value);
+
+            if(checkBoxFarFriends.Checked)
+            {
+               
+                featchNearesrFriend(chosenRadius,Enums.eDistanceMethod.farOffFriends);
+
+            }
+            else
+            {
+
+                featchNearesrFriend(chosenRadius, Enums.eDistanceMethod.closestFriends);
+
+            }
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+            if(numericUpDownRadius.Value != 0)
+            {
+
+                buttonNearestFriends.Enabled = true;
+
+            }
+            else
+            {
+
+                buttonNearestFriends.Enabled = false;
+
+            }
+           
+        }
+
+        private void featchNearesrFriend(int i_Radius, Enums.eDistanceMethod eDistance)
+        {
+
+            List<FriendByCoordinate> listOfNearesrFriend = FeatureFactory.Instance.Create(FormMainFacade.Instance.LoggedInUser.LoggedUser).InitiateCloseFriends(i_Radius, eDistance);
+
+            if (listOfNearesrFriend.Count == 0)
+            {
+
+                lbClosestFriends.Items.Add("No Friends :(");
+
+            }
+            else if (listOfNearesrFriend.Count > 0)
+            {
+
+                foreach (FriendByCoordinate friendByCoordinate in listOfNearesrFriend)
+                {
+
+                    lbClosestFriends.Items.Add(friendByCoordinate.m_Name);
+
+                }
+
+            }
+
+        }
+
+        #endregion
+
+        #region Features Friends Analyzer
+
+        //Feature Friends Analyzer
+        private void buttonFA_Click(object sender, EventArgs e)
+        {
+
+            fetchFriendAnalyzer();
+
+        }
+
+        private void buttonClearFA_Click(object sender, EventArgs e)
+        {
+
+            pictureBoxFriendFA.Image = null;
+            pictureBoxUserFA.Image = null;
+            labelFriendNameFA.Text = string.Empty;
+            labelUserNameFA.Text = string.Empty;
+            labelMSum.Text = string.Empty;
+            labelFsum.Text = string.Empty;
+
         }
 
         private void fetchFriendAnalyzer()
         {
 
             int randomIndex = m_RandomForIndexChoseFriend.Next(0, FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends.Count);
-
             double avarageOfFriends = FeatureFactory.Instance.Create(FormMainFacade.Instance.LoggedInUser.LoggedUser).InitiateFriendAnalyzer(FormMainFacade.Instance.LoggedInUser.LoggedUser.Friends[randomIndex]);
 
             if (FormMainFacade.Instance.LoggedInUser.LoggedUser.PictureSmallURL != null)
@@ -542,11 +518,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
             labelMSum.Text = string.Format("{0}", m_Analyzer);
-
             labelFsum.Text = string.Format("{0}", avarageOfFriends);
 
         }
+        #endregion
 
+        #region Features Friends Matcher
+
+        // Feature Friends Matcher
         private void fetchFriendMatcher()
         {
 
@@ -606,6 +585,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
                     labelFriend2Name.Text = string.Format("Null");
 
                 }
+
                 panel5.Enabled = true;
 
             }
@@ -649,20 +629,18 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         {
 
             RadioButton checkedButton = panel7.Controls.OfType<RadioButton>().FirstOrDefault(radioButton => radioButton.Checked);
-
             listBoxFriendsAndMatch.Items.Add(string.Format("{0}, {1}, Rank: {2}", (labelFriend1Name.Text, labelFriend2Name.Text, checkedButton.Tag.ToString())));
-            
+
         }
+
+        #endregion
 
         private void buttonEditAbout_Click(object sender, EventArgs e)
         {
 
-            textBoxBdayChange.Visible = true;
-
-            textBoxEmailChange.Visible = true;
-
+            textBoxEmailChanges.Visible = true;
+            textBoxBirthdayChanges.Visible = true;
             textBoxNameChange.Visible = true;
-
             buttonSaveChanges.Visible = true;
 
         }
@@ -677,17 +655,17 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private void saveChanges()
         {
 
-            if (textBoxBdayChange.Text == string.Empty)
+            if (textBoxBirthdayChanges.Text == string.Empty)
             {
 
-                textBoxBdayChange.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Birthday;
+                textBoxBirthdayChanges.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Birthday;
 
             }
 
-            if (textBoxEmailChange.Text == string.Empty)
+            if (textBoxEmailChanges.Text == string.Empty)
             {
 
-                textBoxEmailChange.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Email;
+                textBoxEmailChanges.Text = FormMainFacade.Instance.LoggedInUser.LoggedUser.Email;
 
             }
 
@@ -698,20 +676,14 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
             }
 
-            FormMainFacade.Instance.LoggedInUser.LoggedUser.Email = textBoxEmailChange.Text;
-
-            FormMainFacade.Instance.LoggedInUser.LoggedUser.Birthday = textBoxBdayChange.Text;
-
+            FormMainFacade.Instance.LoggedInUser.LoggedUser.Email = textBoxEmailChanges.Text;
+            FormMainFacade.Instance.LoggedInUser.LoggedUser.Birthday = textBoxBirthdayChanges.Text;
             FormMainFacade.Instance.LoggedInUser.LoggedUser.Name = textBoxNameChange.Text;
-         
-            textBoxBdayChange.Visible = false;
-
-            textBoxEmailChange.Visible = false;
-
+            textBoxEmailChanges.Visible = false;
+            textBoxBirthdayChanges.Visible = false;
             textBoxNameChange.Visible = false;
-
+         
             MessageBox.Show("Saved Changes");
-
             buttonSaveChanges.Visible = false;
 
         }
@@ -726,49 +698,39 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private void mailValidate()
         {
 
-            string email = textBoxEmailChange.Text;
-
+            string email = textBoxEmailChanges.Text;
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-
             Match match = regex.Match(email);
 
             if (!match.Success)
             {
 
                 MessageBox.Show("Email not valid!");
-
-                buttonSaveChanges.Enabled = false;
-
-            }
-            else
-            {
-
-                buttonSaveChanges.Enabled = true;
+                textBoxEmailChanges.Text = string.Empty;
 
             }
-
+          
         }
 
         private void textBoxBdayChange_Validating(object sender, CancelEventArgs e)
         {
 
             Regex patternBday = new Regex(@"^(\d{1,2})/(\d{1,2})/(\d{4})$");
-
-            Match match = patternBday.Match(textBoxBdayChange.Text);
+            Match match = patternBday.Match(textBoxBirthdayChanges.Text);
 
             if (match.Success)
             {
 
                 int dd = int.Parse(match.Groups[1].Value);
-
                 int mm = int.Parse(match.Groups[2].Value);
-
                 int yyyy = int.Parse(match.Groups[3].Value);
 
                 e.Cancel = dd < 1 || dd > 31 || mm < 1 || mm > 12;
+
             }
             else
             {
+
                 e.Cancel = true;
             
             }
@@ -776,9 +738,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             if (e.Cancel)
             {
 
-                if (MessageBox.Show("Wrong date format. The correct format is dd/mm/yyyy\n+ dd should be between 1 and 31.\n+ mm should be between 1 and 12", "Invalid date", MessageBoxButtons.OKCancel, MessageBoxIcon.Error) == DialogResult.Cancel)
-                
-                    e.Cancel = false;
+                MessageBox.Show("Wrong date format. The correct format is dd/mm/yyyy\n+ dd should be between 1 and 31.\n+ mm should be between 1 and 12", "Invalid date", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                e.Cancel = false;
 
             }
 
@@ -791,19 +752,23 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
         }
 
+        //Refresh
         private void pictureBoxRefresh_Click(object sender, EventArgs e)
         {
+
             if(r_FetchersThread.Join(1) && r_UserDetailsThread.Join(1))
             {
-                listBoxPosts.DataSource = null;
+
                 listBoxAlbums.Items.Clear();
-                listBoxFavouriteTeams.Items.Clear();
-                listBoxPosts.Items.Clear();
+                listBoxPages.Items.Clear();
                 listBoxFriendsList.Items.Clear();
+                FormMainFacade.Instance.LoginToMainForm();
                 new Thread(fetchLoggedInUser).Start(); 
+
             }    
-            //fetchLoggedInUser();  
+            
         }
+
     }
 
 }

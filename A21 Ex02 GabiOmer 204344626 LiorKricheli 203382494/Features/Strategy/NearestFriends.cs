@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
+
     public struct FriendByCoordinate
     {
 
         public double m_Distance;
-
         public string m_Name;
 
     }
@@ -20,55 +20,51 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
     internal class NearestFriends // Mechanism
     {
 
-        private User m_loggedUser;
-        private List<FriendByCoordinate> listFriendsInRadius;
-        private FriendByCoordinate closeFriends;
-        
-        public Func<Enums.eDistanceMethod,double,int,bool> distanceStrategy { get; set; }
+        private User                     m_LoggedUser;
+        private List<FriendByCoordinate> m_ListFriendsInRadius;
+        private FriendByCoordinate       m_CloseFriends;       
+        public Func<Enums.eDistanceMethod,double,int,bool> DistanceStrategy { get; set; }
 
         internal NearestFriends(User i_UserSearchFriendsNeares)
         {
 
-            m_loggedUser = i_UserSearchFriendsNeares;
-            listFriendsInRadius = new List<FriendByCoordinate>();
-
+            m_LoggedUser = i_UserSearchFriendsNeares;
+            m_ListFriendsInRadius = new List<FriendByCoordinate>();
 
         }
 
-        internal List<FriendByCoordinate> NearestFriendsMeth(int i_radius,Enums.eDistanceMethod eDistance)
+        internal List<FriendByCoordinate> NearestFriendsMeth(int i_Radius, Enums.eDistanceMethod eDistance)
         {
 
-
             double distance = 0;
-
             int index = 0;
 
             try
             {
 
-                if (m_loggedUser.Friends != null && m_loggedUser.Location.Name != null)
+                if (m_LoggedUser.Friends != null && m_LoggedUser.Location.Name != null)
                 {
 
-                    listFriendsInRadius = new List<FriendByCoordinate>();
+                    m_ListFriendsInRadius = new List<FriendByCoordinate>();
 
-                    foreach (User friend in m_loggedUser.Friends)
+                    foreach (User friend in m_LoggedUser.Friends)
                     {
+
                         if (friend.Location.Location != null)
                         {
 
-                            distance = this.distance((double)m_loggedUser.Location.Location.Latitude,
-                               (double)m_loggedUser.Location.Location.Longitude,
+                            distance = this.distance((double)m_LoggedUser.Location.Location.Latitude,
+                               (double)m_LoggedUser.Location.Location.Longitude,
                                (double)friend.Location.Location.Latitude,
                                (double)friend.Location.Location.Longitude);
 
-                            closeFriends.m_Distance = distance;
-                            closeFriends.m_Name = friend.Name;
+                            m_CloseFriends.m_Distance = distance;
+                            m_CloseFriends.m_Name = friend.Name;
                             
-                            if(distanceStrategy.Invoke(eDistance,distance,i_radius)) //injection
+                            if(DistanceStrategy.Invoke(eDistance, distance, i_Radius)) //injection
                             {
-                                listFriendsInRadius.Insert(index++, closeFriends);
+                                m_ListFriendsInRadius.Insert(index++, m_CloseFriends);
                             }
-
 
                         }
                         else
@@ -82,7 +78,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
 
                 }
 
-                return listFriendsInRadius;
+                return m_ListFriendsInRadius;
 
             }
             catch
@@ -93,7 +89,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             }
 
         }
-
 
         internal double toRadians(double i_AngleIn10thofaDegree)
         {
@@ -138,4 +133,5 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         }
 
     }
+
 }

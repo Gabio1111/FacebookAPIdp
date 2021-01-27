@@ -1,5 +1,5 @@
 ﻿
-namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
+namespace A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494
 {
     partial class MainForm
     {
@@ -37,8 +37,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.emailLabel1 = new System.Windows.Forms.Label();
             this.birthdayLabel1 = new System.Windows.Forms.Label();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
-            this.textBoxEmailChange = new System.Windows.Forms.TextBox();
-            this.textBoxBdayChange = new System.Windows.Forms.TextBox();
+            this.textBoxBirthdayChanges = new System.Windows.Forms.TextBox();
+            this.textBoxEmailChanges = new System.Windows.Forms.TextBox();
             this.textBoxNameChange = new System.Windows.Forms.TextBox();
             this.buttonEditAbout = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -75,9 +75,9 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelFriendsList = new System.Windows.Forms.Label();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
             this.pictureBoxFavTeams = new System.Windows.Forms.PictureBox();
-            this.listBoxFavouriteTeams = new System.Windows.Forms.ListBox();
+            this.listBoxPages = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.labelCheckins = new System.Windows.Forms.Label();
+            this.labelPages = new System.Windows.Forms.Label();
             this.splitContainer6 = new System.Windows.Forms.SplitContainer();
             this.listBoxAlbums = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -122,7 +122,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.buttonFA = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.labelAnalyzer = new System.Windows.Forms.Label();
-            this.checkinsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panelDetailsOfUser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -177,7 +176,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserFA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).BeginInit();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDetailsOfUser
@@ -187,8 +185,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panelDetailsOfUser.Controls.Add(this.emailLabel1);
             this.panelDetailsOfUser.Controls.Add(this.birthdayLabel1);
             this.panelDetailsOfUser.Controls.Add(this.buttonSaveChanges);
-            this.panelDetailsOfUser.Controls.Add(this.textBoxEmailChange);
-            this.panelDetailsOfUser.Controls.Add(this.textBoxBdayChange);
+            this.panelDetailsOfUser.Controls.Add(this.textBoxBirthdayChanges);
+            this.panelDetailsOfUser.Controls.Add(this.textBoxEmailChanges);
             this.panelDetailsOfUser.Controls.Add(this.textBoxNameChange);
             this.panelDetailsOfUser.Controls.Add(this.buttonEditAbout);
             this.panelDetailsOfUser.Location = new System.Drawing.Point(3, 137);
@@ -238,21 +236,21 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
             this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
             // 
-            // textBoxEmailChange
+            // textBoxBirthdayChanges
             // 
-            this.textBoxEmailChange.Location = new System.Drawing.Point(145, 47);
-            this.textBoxEmailChange.Name = "textBoxEmailChange";
-            this.textBoxEmailChange.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEmailChange.TabIndex = 21;
-            this.textBoxEmailChange.Validated += new System.EventHandler(this.textBoxEmailChange_Validated);
+            this.textBoxBirthdayChanges.Location = new System.Drawing.Point(145, 47);
+            this.textBoxBirthdayChanges.Name = "textBoxBirthdayChanges";
+            this.textBoxBirthdayChanges.Size = new System.Drawing.Size(100, 20);
+            this.textBoxBirthdayChanges.TabIndex = 21;
+            this.textBoxBirthdayChanges.Validated += new System.EventHandler(this.textBoxEmailChange_Validated);
             // 
-            // textBoxBdayChange
+            // textBoxEmailChanges
             // 
-            this.textBoxBdayChange.Location = new System.Drawing.Point(145, 84);
-            this.textBoxBdayChange.Name = "textBoxBdayChange";
-            this.textBoxBdayChange.Size = new System.Drawing.Size(100, 20);
-            this.textBoxBdayChange.TabIndex = 20;
-            this.textBoxBdayChange.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxBdayChange_Validating);
+            this.textBoxEmailChanges.Location = new System.Drawing.Point(145, 84);
+            this.textBoxEmailChanges.Name = "textBoxEmailChanges";
+            this.textBoxEmailChanges.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEmailChanges.TabIndex = 20;
+            this.textBoxEmailChanges.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxBdayChange_Validating);
             // 
             // textBoxNameChange
             // 
@@ -308,7 +306,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             this.pictureBoxRefresh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRefresh.Image")));
-            this.pictureBoxRefresh.Location = new System.Drawing.Point(206, 12);
+            this.pictureBoxRefresh.Location = new System.Drawing.Point(182, 57);
             this.pictureBoxRefresh.Name = "pictureBoxRefresh";
             this.pictureBoxRefresh.Size = new System.Drawing.Size(42, 37);
             this.pictureBoxRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -513,7 +511,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // 
             // postAdapterBindingSource
             // 
-            this.postAdapterBindingSource.DataSource = typeof(A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
+            this.postAdapterBindingSource.DataSource = typeof(A21_Ex03_GabiOmer_204344626_LiorKricheli_203382494.PostAdapter);
             // 
             // listBoxPosts
             // 
@@ -671,7 +669,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             // splitContainer5.Panel1
             // 
             this.splitContainer5.Panel1.Controls.Add(this.pictureBoxFavTeams);
-            this.splitContainer5.Panel1.Controls.Add(this.listBoxFavouriteTeams);
+            this.splitContainer5.Panel1.Controls.Add(this.listBoxPages);
             this.splitContainer5.Panel1.Controls.Add(this.panel4);
             // 
             // splitContainer5.Panel2
@@ -691,20 +689,20 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.pictureBoxFavTeams.TabIndex = 2;
             this.pictureBoxFavTeams.TabStop = false;
             // 
-            // listBoxFavouriteTeams
+            // listBoxPages
             // 
-            this.listBoxFavouriteTeams.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listBoxFavouriteTeams.FormattingEnabled = true;
-            this.listBoxFavouriteTeams.Location = new System.Drawing.Point(0, 28);
-            this.listBoxFavouriteTeams.Name = "listBoxFavouriteTeams";
-            this.listBoxFavouriteTeams.Size = new System.Drawing.Size(219, 204);
-            this.listBoxFavouriteTeams.TabIndex = 1;
-            this.listBoxFavouriteTeams.SelectedIndexChanged += new System.EventHandler(this.listBoxFavouriteTeams_SelectedIndexChanged);
+            this.listBoxPages.Dock = System.Windows.Forms.DockStyle.Left;
+            this.listBoxPages.FormattingEnabled = true;
+            this.listBoxPages.Location = new System.Drawing.Point(0, 28);
+            this.listBoxPages.Name = "listBoxPages";
+            this.listBoxPages.Size = new System.Drawing.Size(219, 204);
+            this.listBoxPages.TabIndex = 1;
+            this.listBoxPages.SelectedIndexChanged += new System.EventHandler(this.listBoxPages_SelectedIndexChanged);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.panel4.Controls.Add(this.labelCheckins);
+            this.panel4.Controls.Add(this.labelPages);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(1);
@@ -712,16 +710,16 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.panel4.Size = new System.Drawing.Size(331, 28);
             this.panel4.TabIndex = 0;
             // 
-            // labelCheckins
+            // labelPages
             // 
-            this.labelCheckins.AutoSize = true;
-            this.labelCheckins.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCheckins.Location = new System.Drawing.Point(1, 4);
-            this.labelCheckins.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.labelCheckins.Name = "labelCheckins";
-            this.labelCheckins.Size = new System.Drawing.Size(144, 22);
-            this.labelCheckins.TabIndex = 0;
-            this.labelCheckins.Text = "Favourite Teams";
+            this.labelPages.AutoSize = true;
+            this.labelPages.Font = new System.Drawing.Font("Times New Roman", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPages.Location = new System.Drawing.Point(1, 4);
+            this.labelPages.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.labelPages.Name = "labelPages";
+            this.labelPages.Size = new System.Drawing.Size(57, 22);
+            this.labelPages.TabIndex = 0;
+            this.labelPages.Text = "Pages";
             // 
             // splitContainer6
             // 
@@ -1225,10 +1223,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             this.labelAnalyzer.TabIndex = 0;
             this.labelAnalyzer.Text = "Friend Analyzer";
             // 
-            // checkinsBindingSource
-            // 
-            this.checkinsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Checkin);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1307,7 +1301,6 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFriendFA)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkinsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1317,8 +1310,8 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Panel panelDetailsOfUser;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btLogout;
-        private System.Windows.Forms.TextBox textBoxEmailChange;
-        private System.Windows.Forms.TextBox textBoxBdayChange;
+        private System.Windows.Forms.TextBox textBoxBirthdayChanges;
+        private System.Windows.Forms.TextBox textBoxEmailChanges;
         private System.Windows.Forms.TextBox textBoxNameChange;
         private System.Windows.Forms.Button buttonEditAbout;
         private System.Windows.Forms.Button buttonSaveChanges;
@@ -1341,7 +1334,7 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Label labelFriendsList;
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label labelCheckins;
+        private System.Windows.Forms.Label labelPages;
         private System.Windows.Forms.SplitContainer splitContainer6;
         private System.Windows.Forms.ListBox listBoxAlbums;
         private System.Windows.Forms.Panel panel3;
@@ -1387,13 +1380,12 @@ namespace A21_Ex02_GabiOmer_204344626_LiorKricheli_203382494
         private System.Windows.Forms.Label labelEventStatistics;
         private System.Windows.Forms.Label labelAlbumsStatistics;
         private System.Windows.Forms.Label labelPostStatistics;
-        private System.Windows.Forms.BindingSource checkinsBindingSource;
         private System.Windows.Forms.Label nameLabel1;
         private System.Windows.Forms.BindingSource userBindingSource1;
         private System.Windows.Forms.Label emailLabel1;
         private System.Windows.Forms.Label birthdayLabel1;
         private System.Windows.Forms.PictureBox imageNormalPictureBox;
-        private System.Windows.Forms.ListBox listBoxFavouriteTeams;
+        private System.Windows.Forms.ListBox listBoxPages;
         private System.Windows.Forms.PictureBox pictureBoxFavTeams;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBoxFarFriends;
